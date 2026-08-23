@@ -1,7 +1,7 @@
 'use client';
 
 import { Form, Formik, useField } from 'formik';
-import { AlertTriangle, Building2, CheckCircle2, Mail, Phone, Plus, RotateCcw, Search, Sparkles, Trash2, UserPlus, UsersRound, X } from 'lucide-react';
+import { AlertTriangle, CheckCircle2, Mail, Phone, Plus, RotateCcw, Search, Sparkles, Trash2, UserPlus, UsersRound, X } from 'lucide-react';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import * as Yup from 'yup';
 
@@ -77,7 +77,7 @@ export default function Home() {
   return <main className="app-shell">
     <a className="skip-link" href="#main-content">Saltar al contenido</a>
     <header className="topbar"><a className="brand" href="#main-content" aria-label="Nexo, ir al contenido"><span className="brand-mark"><Sparkles size={18} strokeWidth={2.2} /></span><span>Nexo</span></a><div className="topbar-actions"><span className="workspace-label">Espacio de trabajo</span><span className="avatar avatar-small">YM</span></div></header>
-    <div className="layout"><aside className="sidebar" aria-label="Navegación principal"><nav><a className="nav-item active" href="#main-content" aria-current="page"><UsersRound size={19} /> Contactos</a><a className="nav-item" href="#departments"><Building2 size={19} /> Departamentos</a></nav><div className="sidebar-note"><span className="status-dot" /><div><strong>Directorio activo</strong><span>Datos locales</span></div></div></aside>
+    <div className="layout"><aside className="sidebar" aria-label="Navegación principal"><nav><a className="nav-item active" href="#main-content" aria-current="page"><UsersRound size={19} /> Contactos</a></nav><div className="sidebar-note"><span className="status-dot" /><div><strong>Directorio activo</strong><span>Datos locales</span></div></div></aside>
       <section id="main-content" className="content">
         <div className="page-heading"><div><p className="eyebrow">Directorio del equipo</p><h1>Contactos</h1><p className="heading-copy">Gestiona a las personas que hacen posible el trabajo.</p></div><button className="primary-button" type="button" onClick={() => setShowAdd(true)}><Plus size={18} /> Agregar contacto</button></div>
         <div className="stats-grid" aria-label="Resumen de contactos"><article className="stat-card"><span>Contactos totales</span><strong>{loading ? '—' : contacts.length}</strong><small><UsersRound size={16} /> En {departments.filter((item) => counts[item]).length} departamentos</small></article><article className="stat-card"><span>Departamento principal</span><strong>{loading ? '—' : leadingDepartment}</strong><small>{leadingDepartment === '—' ? 'Sin datos' : `${counts[leadingDepartment as Department]} personas`}</small></article><article className="stat-card"><span>Estado del directorio</span><strong>{loadError ? 'Sin conexión' : 'Al día'}</strong><small>{loadError ? 'Reintenta la carga' : 'Fuente local sincronizada'}</small></article></div>
