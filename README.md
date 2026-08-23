@@ -46,7 +46,7 @@ npm run lint     # Revisión estática
 
 ## Decisiones de UX/UI
 
-- **Jerarquía operativa:** la acción principal, los indicadores y el directorio aparecen en el orden natural de trabajo.
+- **Jerarquía operativa:** la acción principal, la búsqueda, los filtros y el directorio aparecen en el orden natural de trabajo.
 - **Prevención de errores:** validación contextual, botón deshabilitado y confirmación antes de eliminar.
 - **Visibilidad del estado:** skeleton, contadores, mensajes vacíos, errores de carga y confirmaciones mantienen informada a la persona usuaria.
 - **Filtros comprensibles:** los chips muestran la cantidad disponible y se combinan con la búsqueda sin pasos adicionales.
