@@ -1,9 +1,10 @@
 'use client';
 
-import { CheckCircle2, Plus, RotateCcw, Search, Sparkles, Trash2, UsersRound, X } from 'lucide-react';
+import { CheckCircle2, Plus, RotateCcw, Search, Sparkles, UsersRound, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { AddContactModal } from '@/components/contacts/add-contact-modal';
 import { ContactList } from '@/components/contacts/contact-list';
+import { DeleteContactModal } from '@/components/contacts/delete-contact-modal';
 import { EmptyState, LoadError, SkeletonList } from '@/components/contacts/directory-states';
 import { DEPARTMENTS, type Contact, type Department } from '@/types/contact';
 
@@ -38,7 +39,7 @@ export function ContactManager() {
   const clearFilters = () => { setQuery(''); setDepartment('Todos'); };
 
   const addContact = (contact: Contact) => { setContacts((current) => [contact, ...current]); setMessage(`${contact.name} se agregó al directorio`); };
-  const deleteContact = () => { if (!pendingDelete) return; const name = pendingDelete.name; setContacts((current) => current.filter((contact) => contact.id !== pendingDelete.id)); setPendingDelete(null); setMessage(`${name} se eliminó del directorio`); };
+  const deleteContact = () => { if (!pendingDelete) return; const name = pendingDelete.name; setContacts((current) => current.filter((contact) => contact.id !== pendingDelete.id)); setMessage(`${name} se eliminó del directorio`); };
 
   return <main className="app-shell">
     <a className="skip-link" href="#main-content">Saltar al contenido</a>
@@ -54,7 +55,7 @@ export function ContactManager() {
       </section>
     </div>
     {showAdd && <AddContactModal onClose={() => setShowAdd(false)} onAdd={addContact} />}
-    {pendingDelete && <div className="modal-backdrop" role="presentation"><div className="confirm-card" role="alertdialog" aria-modal="true" aria-labelledby="delete-title" aria-describedby="delete-description"><span className="confirm-icon"><Trash2 size={22} /></span><h2 id="delete-title">Eliminar contacto</h2><p id="delete-description">¿Seguro que quieres eliminar a <strong>{pendingDelete.name}</strong>? Esta acción no se puede deshacer.</p><div><button className="secondary-button" type="button" autoFocus onClick={() => setPendingDelete(null)}>Cancelar</button><button className="danger-button" type="button" onClick={deleteContact}>Sí, eliminar</button></div></div></div>}
+    {pendingDelete && <DeleteContactModal contact={pendingDelete} onClose={() => setPendingDelete(null)} onConfirm={deleteContact} />}
     {message && <div className="toast" role="status"><CheckCircle2 size={18} /><span>{message}</span><button onClick={() => setMessage('')} aria-label="Cerrar notificación"><X size={15} /></button></div>}
   </main>;
 }
