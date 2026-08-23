@@ -57,9 +57,16 @@ npm run lint     # Revisión estática
 ```text
 app/
   layout.tsx       Metadatos y configuración global
-  page.tsx         Lógica, componentes y estados del directorio
+  page.tsx         Punto de entrada de la vista
   globals.css      Tokens y estilos base
   product.css      Estados y superficies interactivas
+components/
+  contacts/        Componentes y contenedor del dominio
+  ui/              Componentes de formulario reutilizables
+lib/
+  contacts.ts      Validación y utilidades del dominio
+types/
+  contact.ts       Tipos y constantes compartidas
 public/
   data.json        Estado inicial de contactos
 ```
