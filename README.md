@@ -62,11 +62,13 @@ app/
   vendor.css       Entrada aislada para Tailwind
   globals.scss     Tokens, reset y estilos base
 components/
-  atoms/           Controles indivisibles como TextField
-  molecules/       Combinaciones pequeñas y estados de UI
-  organisms/       Listados y modales del dominio
-  templates/       Composición y orquestación de la vista
-  */*/             Cada componente contiene su TSX y SCSS
+  text-field/          Control de formulario reutilizable
+  confirmation-modal/ Modal de confirmación configurable
+  add-contact-modal/  Formulario de alta del dominio
+  contact-list/       Tabla responsive de contactos
+  directory-state/    Estados de carga, error y vacío
+  contact-manager/    Composición de la vista y estado
+  */                  Cada componente contiene su TSX y SCSS
 hooks/
   use-modal-exit.ts Comportamiento reutilizable sin presentación
 lib/

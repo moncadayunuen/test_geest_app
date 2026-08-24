@@ -5,7 +5,7 @@ import { Plus, UserPlus, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 import { contactSchema } from '@/lib/contacts';
 import { DEPARTMENTS, type Contact, type ContactFormValues } from '@/types/contact';
-import { TextField } from '@/components/atoms/text-field/text-field';
+import { TextField } from '@/components/text-field/text-field';
 import { useModalExit } from '@/hooks/use-modal-exit';
 import './add-contact-modal.scss';
 
