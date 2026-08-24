@@ -23,7 +23,7 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 - Sass con estilos co-localizados por componente
 - Formik + Yup
 - Zustand para estado de dominio
-- Lucide React
+- Sistema propio de iconos SVG
 - Vinext / Vite
 
 ## Ejecutar localmente
@@ -63,6 +63,7 @@ app/
   vendor.css       Entrada aislada para Tailwind
   globals.scss     Tokens, reset y estilos base
 components/
+  icon/                Iconografía SVG propia y tipada
   text-field/          Control de formulario reutilizable
   confirmation-modal/ Modal de confirmación configurable
   add-contact-modal/  Formulario de alta del dominio
