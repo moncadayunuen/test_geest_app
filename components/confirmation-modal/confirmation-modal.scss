@@ -1,1 +1,37 @@
-.confirm-card { width: min(410px, 100%); }
+.modal-backdrop .confirm-card {
+  width: min(420px, 100%);
+  padding: 28px;
+  border: 1px solid #dce3ed;
+  border-radius: 9px;
+  background: #fff;
+  box-shadow: 0 22px 60px rgba(7, 27, 77, .2);
+
+  .confirm-icon {
+    width: 48px;
+    height: 48px;
+    border: 1px solid #ffd4d4;
+    border-radius: 7px;
+    background: #fff1f1;
+    color: #d83a3a;
+  }
+
+  h2 { color: #071b4d; font-size: 18px; }
+  p { color: #52658f; }
+  p strong { color: #071b4d; }
+
+  .secondary-button {
+    min-height: 42px;
+    border-color: #0667f7;
+    border-radius: 6px;
+    color: #0667f7;
+  }
+
+  .secondary-button:hover { background: #edf5ff; }
+  .danger-button { min-height: 42px; border-radius: 6px; background: #d83a3a; }
+  .danger-button:hover { background: #bd2929; }
+}
+
+@media (max-width: 640px) {
+  .modal-backdrop .confirm-card { padding: 24px 20px; border-radius: 9px; }
+  .confirm-card > div { display: grid; grid-template-columns: 1fr 1fr; }
+}
