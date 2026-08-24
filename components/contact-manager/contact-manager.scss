@@ -1044,6 +1044,18 @@ transform:translateY(5px) scale(.99)}
 .department-tag { background:#edf5ff; color:#075ccf; }
 .primary-button { background:#0667f7; box-shadow:none; }
 .primary-button:hover { background:#0058db; }
+.toolbar-actions .clear-button {
+  height:48px;
+  align-self:flex-end;
+  padding:0 16px;
+  border:1px solid #0667f7;
+  border-radius:6px;
+  background:#fff;
+  color:#0667f7;
+  font-size:12px;
+  font-weight:750;
+}
+.toolbar-actions .clear-button:hover { border-color:#0058db; background:#edf5ff; color:#0058db; }
 .modal-icon,.empty-icon { background:#edf5ff; color:#0667f7; }
 .form-field input:focus,.form-field select:focus { border-color:#0667f7; box-shadow:0 0 0 3px rgba(6,103,247,.1); }
 .avatar { background:#e8f2ff; color:#075ccf; }
