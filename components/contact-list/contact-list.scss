@@ -1,1 +1,58 @@
-.contact-list { display: grid; }
+.contact-list {
+  display: grid;
+
+  .contact-table-head {
+    min-height: 48px;
+    padding-block: 0;
+    border-bottom: 0;
+    background: #0869b7;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .contact-row {
+    min-height: 66px;
+    border-left: 5px solid #0c9d9a;
+    border-bottom-color: #cfd8e4;
+  }
+
+  .contact-row[data-department='Ventas'] { border-left-color: #7041bd; }
+  .contact-row[data-department='Desarrollo'] { border-left-color: #079bd4; }
+  .contact-row[data-department='Marketing'] { border-left-color: #f0b400; }
+  .contact-row[data-department='Soporte'] { border-left-color: #0c9d9a; }
+
+  .contact-row:hover { background: #f4f9ff; }
+
+  .department-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0;
+    background: transparent;
+    color: #405273;
+    font-size: 11px;
+  }
+
+  .department-tag::before {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #0c9d9a;
+    content: '';
+  }
+
+  .contact-row[data-department='Ventas'] .department-tag::before { background: #7041bd; }
+  .contact-row[data-department='Desarrollo'] .department-tag::before { background: #079bd4; }
+  .contact-row[data-department='Marketing'] .department-tag::before { background: #f0b400; }
+  .contact-row[data-department='Soporte'] .department-tag::before { background: #0c9d9a; }
+}
+
+@media (max-width: 640px) {
+  .contact-list {
+    .contact-row { min-height: 70px; border-left-width: 4px; }
+    .contact-row.expanded > .department-tag { display: inline-flex !important; }
+  }
+}
