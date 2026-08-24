@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://nexo-contactos.lobodev-soporte.chatgpt.site';
+import { siteConfig } from '@/config/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [{ url: siteUrl, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 }];
+  return [{ url: siteConfig.url, lastModified: new Date(), changeFrequency: 'monthly', priority: 1 }];
 }

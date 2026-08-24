@@ -1,7 +1,6 @@
 import type { MetadataRoute } from 'next';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://nexo-contactos.lobodev-soporte.chatgpt.site';
+import { siteConfig } from '@/config/site';
 
 export default function robots(): MetadataRoute.Robots {
-  return { rules: { userAgent: '*', allow: '/' }, sitemap: `${siteUrl}/sitemap.xml`, host: siteUrl };
+  return { rules: { userAgent: '*', allow: '/' }, sitemap: `${siteConfig.url}/sitemap.xml`, host: siteConfig.url };
 }

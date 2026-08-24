@@ -62,6 +62,8 @@ app/
   page.tsx         Punto de entrada de la vista
   vendor.css       Entrada aislada para Tailwind
   globals.scss     Tokens, reset y estilos base
+config/
+  site.ts          Configuración centralizada de SEO y dominio
 components/
   icon/                Iconografía SVG propia y tipada
   announcement-banner/ Resumen contextual descartable

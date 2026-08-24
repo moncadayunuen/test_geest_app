@@ -1,9 +1,8 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
+import { siteConfig } from '@/config/site';
 import './vendor.css';
 import './globals.scss';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://nexo-contactos.lobodev-soporte.chatgpt.site';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -16,10 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: { default: 'Nexo | Directorio de contactos', template: '%s | Nexo' },
-  description: 'Gestiona, encuentra y organiza los contactos de tu equipo desde un directorio rápido, accesible y centralizado.',
-  applicationName: 'Nexo',
+  metadataBase: new URL(siteConfig.url),
+  title: { default: siteConfig.title, template: '%s | Nexo' },
+  description: siteConfig.description,
+  applicationName: siteConfig.name,
   authors: [{ name: 'Yunuen Moncada' }],
   creator: 'Yunuen Moncada',
   category: 'productivity',
@@ -27,10 +26,12 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }], shortcut: '/favicon.svg' },
   manifest: '/manifest.webmanifest',
-  openGraph: { type: 'website', locale: 'es_MX', url: '/', siteName: 'Nexo', title: 'Nexo | Directorio de contactos', description: 'Encuentra y organiza los contactos de tu equipo desde un solo lugar.' },
-  twitter: { card: 'summary', title: 'Nexo | Directorio de contactos', description: 'Encuentra y organiza los contactos de tu equipo desde un solo lugar.' },
+  openGraph: { type: 'website', locale: siteConfig.locale, url: '/', siteName: siteConfig.name, title: siteConfig.title, description: siteConfig.description },
+  twitter: { card: 'summary', title: siteConfig.title, description: siteConfig.description },
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
 };
+
+export const viewport: Viewport = { themeColor: '#07529d', colorScheme: 'light' };
 
 export default function RootLayout({
   children,
@@ -38,11 +39,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX">
+    <html lang={siteConfig.language}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: siteConfig.name, applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: siteConfig.description, url: siteConfig.url, inLanguage: siteConfig.language }) }} />
       </body>
     </html>
   );
