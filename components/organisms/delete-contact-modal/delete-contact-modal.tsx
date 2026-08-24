@@ -1,8 +1,9 @@
 'use client';
 
 import { Trash2 } from 'lucide-react';
-import { useModalExit } from '@/components/ui/use-modal-exit';
+import { useModalExit } from '@/hooks/use-modal-exit';
 import type { Contact } from '@/types/contact';
+import './delete-contact-modal.scss';
 
 type Props = { contact: Contact; onClose: () => void; onConfirm: () => void };
 

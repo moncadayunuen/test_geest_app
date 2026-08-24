@@ -2,6 +2,7 @@
 
 import { useField } from 'formik';
 import type { ContactFormValues } from '@/types/contact';
+import './text-field.scss';
 
 type TextFieldProps = {
   label: string;

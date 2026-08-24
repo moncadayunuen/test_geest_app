@@ -1,4 +1,4 @@
-import { ContactManager } from '@/components/contacts/contact-manager';
+import { ContactManager } from '@/components/templates/contact-manager/contact-manager';
 
 export default function HomePage() {
   return <ContactManager />;

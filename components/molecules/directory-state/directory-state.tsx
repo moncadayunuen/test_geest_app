@@ -1,4 +1,5 @@
 import { AlertTriangle, Plus, Search, UsersRound } from 'lucide-react';
+import './directory-state.scss';
 
 export function SkeletonList() { return <div className="skeleton-list" role="status" aria-label="Cargando contactos">{[1, 2, 3, 4, 5].map((item) => <div className="skeleton-row" key={item}><span /><div><i /><i /></div><i /><i /></div>)}<span className="sr-only">Cargando contactos…</span></div>; }
 

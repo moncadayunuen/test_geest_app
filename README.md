@@ -20,6 +20,7 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 - React 19
 - TypeScript
 - Tailwind CSS 4
+- Sass con estilos co-localizados por componente
 - Formik + Yup
 - Lucide React
 - Vinext / Vite
@@ -58,11 +59,16 @@ npm run lint     # Revisión estática
 app/
   layout.tsx       Metadatos y configuración global
   page.tsx         Punto de entrada de la vista
-  globals.css      Tokens y estilos base
-  product.css      Estados y superficies interactivas
+  vendor.css       Entrada aislada para Tailwind
+  globals.scss     Tokens, reset y estilos base
 components/
-  contacts/        Componentes y contenedor del dominio
-  ui/              Componentes de formulario reutilizables
+  atoms/           Controles indivisibles como TextField
+  molecules/       Combinaciones pequeñas y estados de UI
+  organisms/       Listados y modales del dominio
+  templates/       Composición y orquestación de la vista
+  */*/             Cada componente contiene su TSX y SCSS
+hooks/
+  use-modal-exit.ts Comportamiento reutilizable sin presentación
 lib/
   contacts.ts      Validación y utilidades del dominio
 types/

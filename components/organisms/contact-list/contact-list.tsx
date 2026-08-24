@@ -4,6 +4,7 @@ import { ChevronDown, Mail, Phone, Trash2 } from 'lucide-react';
 import { useState } from 'react';
 import { getInitials } from '@/lib/contacts';
 import type { Contact } from '@/types/contact';
+import './contact-list.scss';
 
 type Props = { contacts: Contact[]; onDelete: (contact: Contact) => void };
 

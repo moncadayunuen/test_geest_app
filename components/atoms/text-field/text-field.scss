@@ -1,0 +1,15 @@
+.form-field {
+  display: grid;
+  gap: 7px;
+
+  > span {
+    display: flex;
+    justify-content: space-between;
+    color: #3d4352;
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  small { color: #9399a5; font-size: 10px; font-weight: 500; }
+  em { color: #c44242; font-size: 10px; font-style: normal; }
+}

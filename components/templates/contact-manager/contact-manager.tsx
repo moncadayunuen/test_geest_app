@@ -2,11 +2,12 @@
 
 import { CheckCircle2, Plus, RotateCcw, Search, Sparkles, UsersRound, X } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { AddContactModal } from '@/components/contacts/add-contact-modal';
-import { ContactList } from '@/components/contacts/contact-list';
-import { DeleteContactModal } from '@/components/contacts/delete-contact-modal';
-import { EmptyState, LoadError, SkeletonList } from '@/components/contacts/directory-states';
+import { AddContactModal } from '@/components/organisms/add-contact-modal/add-contact-modal';
+import { ContactList } from '@/components/organisms/contact-list/contact-list';
+import { DeleteContactModal } from '@/components/organisms/delete-contact-modal/delete-contact-modal';
+import { EmptyState, LoadError, SkeletonList } from '@/components/molecules/directory-state/directory-state';
 import { DEPARTMENTS, type Contact, type Department } from '@/types/contact';
+import './contact-manager.scss';
 
 export function ContactManager() {
   const [contacts, setContacts] = useState<Contact[]>([]);
