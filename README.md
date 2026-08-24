@@ -22,6 +22,7 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 - Tailwind CSS 4
 - Sass con estilos co-localizados por componente
 - Formik + Yup
+- Zustand para estado de dominio
 - Lucide React
 - Vinext / Vite
 
@@ -70,7 +71,11 @@ components/
   contact-manager/    Composición de la vista y estado
   */                  Cada componente contiene su TSX y SCSS
 hooks/
-  use-modal-exit.ts Comportamiento reutilizable sin presentación
+  use-contact-filters.ts Filtrado y conteos derivados
+  use-modal-exit.ts      Transición y desmontaje de modales
+  use-timed-message.ts   Ciclo de vida de notificaciones
+stores/
+  contact-store.ts Estado y acciones del directorio con Zustand
 lib/
   contacts.ts      Validación y utilidades del dominio
 types/

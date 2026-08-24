@@ -1,46 +1,34 @@
 'use client';
 
 import { CheckCircle2, Plus, RotateCcw, Search, Sparkles, Trash2, UsersRound, X } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddContactModal } from '@/components/add-contact-modal/add-contact-modal';
 import { ConfirmationModal } from '@/components/confirmation-modal/confirmation-modal';
 import { ContactList } from '@/components/contact-list/contact-list';
 import { EmptyState, LoadError, SkeletonList } from '@/components/directory-state/directory-state';
-import { DEPARTMENTS, type Contact, type Department } from '@/types/contact';
+import { useContactFilters } from '@/hooks/use-contact-filters';
+import { useTimedMessage } from '@/hooks/use-timed-message';
+import { useContactStore } from '@/stores/contact-store';
+import { DEPARTMENTS, type Contact } from '@/types/contact';
 import './contact-manager.scss';
 
 export function ContactManager() {
-  const [contacts, setContacts] = useState<Contact[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [loadError, setLoadError] = useState(false);
-  const [query, setQuery] = useState('');
-  const [department, setDepartment] = useState<'Todos' | Department>('Todos');
+  const contacts = useContactStore((state) => state.contacts);
+  const status = useContactStore((state) => state.status);
+  const loadContacts = useContactStore((state) => state.loadContacts);
+  const addContactToStore = useContactStore((state) => state.addContact);
+  const removeContact = useContactStore((state) => state.removeContact);
   const [showAdd, setShowAdd] = useState(false);
   const [pendingDelete, setPendingDelete] = useState<Contact | null>(null);
-  const [message, setMessage] = useState('');
-
-  const loadContacts = useCallback(async () => {
-    setLoading(true); setLoadError(false);
-    try {
-      const response = await fetch('/data.json');
-      if (!response.ok) throw new Error('No se pudo cargar data.json');
-      const data = await response.json() as Contact[];
-      await new Promise((resolve) => setTimeout(resolve, 700));
-      setContacts(data);
-    } catch { setLoadError(true); }
-    finally { setLoading(false); }
-  }, []);
+  const { message, showMessage, clearMessage } = useTimedMessage();
+  const { query, setQuery, department, setDepartment, filteredContacts, counts, hasFilters, clearFilters } = useContactFilters(contacts);
+  const loading = status === 'idle' || status === 'loading';
+  const loadError = status === 'error';
 
   useEffect(() => { const timer = window.setTimeout(() => void loadContacts(), 0); return () => window.clearTimeout(timer); }, [loadContacts]);
-  useEffect(() => { if (!message) return; const timeout = window.setTimeout(() => setMessage(''), 3200); return () => clearTimeout(timeout); }, [message]);
 
-  const filteredContacts = useMemo(() => contacts.filter((contact) => contact.name.toLocaleLowerCase('es').includes(query.trim().toLocaleLowerCase('es')) && (department === 'Todos' || contact.department === department)), [contacts, department, query]);
-  const counts = useMemo(() => Object.fromEntries(DEPARTMENTS.map((item) => [item, contacts.filter((contact) => contact.department === item).length])) as Record<Department, number>, [contacts]);
-  const hasFilters = Boolean(query.trim()) || department !== 'Todos';
-  const clearFilters = () => { setQuery(''); setDepartment('Todos'); };
-
-  const addContact = (contact: Contact) => { setContacts((current) => [contact, ...current]); setMessage(`${contact.name} se agregó al directorio`); };
-  const deleteContact = () => { if (!pendingDelete) return; const name = pendingDelete.name; setContacts((current) => current.filter((contact) => contact.id !== pendingDelete.id)); setMessage(`${name} se eliminó del directorio`); };
+  const addContact = (contact: Contact) => { addContactToStore(contact); showMessage(`${contact.name} se agregó al directorio`); };
+  const deleteContact = () => { if (!pendingDelete) return; removeContact(pendingDelete.id); showMessage(`${pendingDelete.name} se eliminó del directorio`); };
 
   return <main className="app-shell">
     <a className="skip-link" href="#main-content">Saltar al contenido</a>
@@ -57,6 +45,6 @@ export function ContactManager() {
     </div>
     {showAdd && <AddContactModal onClose={() => setShowAdd(false)} onAdd={addContact} />}
     {pendingDelete && <ConfirmationModal title="Eliminar contacto" description={<>¿Seguro que quieres eliminar a <strong>{pendingDelete.name}</strong>? Esta acción no se puede deshacer.</>} icon={<Trash2 size={22} />} confirmLabel="Sí, eliminar" onClose={() => setPendingDelete(null)} onConfirm={deleteContact} />}
-    {message && <div className="toast" role="status"><CheckCircle2 size={18} /><span>{message}</span><button onClick={() => setMessage('')} aria-label="Cerrar notificación"><X size={15} /></button></div>}
+    {message && <div className="toast" role="status"><CheckCircle2 size={18} /><span>{message}</span><button onClick={clearMessage} aria-label="Cerrar notificación"><X size={15} /></button></div>}
   </main>;
 }
