@@ -83,10 +83,3 @@ types/
 public/
   data.json        Estado inicial de contactos
 ```
-
-## Mejoras futuras
-
-- Pruebas unitarias y end-to-end.
-- Persistencia mediante API y base de datos.
-- Edición de contactos, paginación y ordenamiento.
-- Roles, permisos y registro de actividad.
