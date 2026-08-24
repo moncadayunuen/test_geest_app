@@ -64,6 +64,7 @@ app/
   globals.scss     Tokens, reset y estilos base
 components/
   icon/                Iconografía SVG propia y tipada
+  announcement-banner/ Resumen contextual descartable
   text-field/          Control de formulario reutilizable
   confirmation-modal/ Modal de confirmación configurable
   add-contact-modal/  Formulario de alta del dominio
