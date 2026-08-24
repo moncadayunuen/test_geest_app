@@ -4,13 +4,14 @@ import { useEffect, useState } from 'react';
 import { AddContactModal } from '@/components/add-contact-modal/add-contact-modal';
 import { AnnouncementBanner } from '@/components/announcement-banner/announcement-banner';
 import { ConfirmationModal } from '@/components/confirmation-modal/confirmation-modal';
+import { ContactFilters } from '@/components/contact-filters/contact-filters';
 import { ContactList } from '@/components/contact-list/contact-list';
 import { EmptyState, LoadError, SkeletonList } from '@/components/directory-state/directory-state';
 import { Icon } from '@/components/icon/icon';
 import { useContactFilters } from '@/hooks/use-contact-filters';
 import { useTimedMessage } from '@/hooks/use-timed-message';
 import { useContactStore } from '@/stores/contact-store';
-import { DEPARTMENTS, type Contact } from '@/types/contact';
+import type { Contact } from '@/types/contact';
 import './contact-manager.scss';
 
 export function ContactManager() {
@@ -41,7 +42,7 @@ export function ContactManager() {
         <div className="page-heading"><div><p className="eyebrow">Directorio del equipo</p><h1>Contactos</h1><p className="heading-copy">Gestiona a las personas que hacen posible el trabajo.</p></div><button className="primary-button" type="button" onClick={() => setShowAdd(true)}><Icon name="plus" /> Agregar contacto</button></div>
         <section className="directory-card" aria-labelledby="directory-title">
           <div className="directory-toolbar"><div><h2 id="directory-title">Directorio</h2><p aria-live="polite">{loading ? 'Cargando contactos…' : `${filteredContacts.length} ${filteredContacts.length === 1 ? 'contacto encontrado' : 'contactos encontrados'}`}</p></div><div className="toolbar-actions"><div className="search-control"><span className="search-label">Buscar contactos</span><label className="search-field"><Icon name="search" size={20} /><span className="sr-only">Buscar por nombre</span><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Escribe un nombre…" /></label></div>{hasFilters && <button className="clear-button" type="button" onClick={clearFilters}><Icon name="reset" size={14} /> Limpiar filtros</button>}</div></div>
-          <div id="departments" className="filter-row" aria-label="Filtrar por departamento">{(['Todos', ...DEPARTMENTS] as const).map((item) => <button type="button" aria-pressed={department === item} className={`filter-chip ${department === item ? 'selected' : ''}`} onClick={() => setDepartment(item)} key={item}>{item}<span>{item === 'Todos' ? contacts.length : counts[item]}</span></button>)}</div>
+          <ContactFilters value={department} total={contacts.length} counts={counts} onChange={setDepartment} />
           <div className="filter-result" key={department}>{loading ? <SkeletonList /> : loadError ? <LoadError onRetry={() => void loadContacts()} /> : filteredContacts.length === 0 ? <EmptyState filtered={hasFilters} onClear={clearFilters} onAdd={() => setShowAdd(true)} /> : <ContactList contacts={filteredContacts} onDelete={setPendingDelete} />}</div>
         </section>
       </section>
