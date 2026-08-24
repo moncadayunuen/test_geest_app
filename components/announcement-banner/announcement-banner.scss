@@ -1,7 +1,7 @@
 .announcement-banner {
   min-height: 58px;
   display: grid;
-  grid-template-columns: max-content minmax(0, 1fr) max-content 28px;
+  grid-template-columns: max-content minmax(0, 1fr) 28px;
   align-items: center;
   gap: 18px;
   margin: -28px -22px 26px;
@@ -16,15 +16,11 @@
 }
 
 .announcement-badge { padding: 7px 10px; border-radius: 6px; background: rgba(255, 255, 255, .16); font-size: 11px; font-weight: 750; }
-.announcement-action { min-height: 36px; display: flex; align-items: center; gap: 7px; padding: 0 13px; border: 0; border-radius: 7px; background: #fff; color: #714eae; font-size: 12px; font-weight: 750; }
-.announcement-action:hover { background: #f7f3ff; }
 .announcement-close { width: 28px; height: 28px; display: grid; place-items: center; padding: 0; border: 0; border-radius: 6px; background: transparent; color: #fff; }
 .announcement-close:hover { background: rgba(255, 255, 255, .14); }
 
 @media (max-width: 900px) {
-  .announcement-banner { grid-template-columns: max-content 1fr 28px; }
   .announcement-banner p span { display: none; }
-  .announcement-action { display: none; }
 }
 
 @media (max-width: 640px) {
