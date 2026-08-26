@@ -2,6 +2,8 @@ import { create } from 'zustand';
 import type { Contact } from '@/types/contact';
 
 type LoadStatus = 'idle' | 'loading' | 'success' | 'error';
+const SIMULATED_LOAD_DELAY_MS = 1200;
+const delay = (milliseconds: number) => new Promise((resolve) => window.setTimeout(resolve, milliseconds));
 
 type ContactState = {
   contacts: Contact[];
@@ -19,10 +21,12 @@ export const useContactStore = create<ContactState>((set, get) => ({
     set({ status: 'loading' });
 
     try {
-      const response = await fetch('/data.json');
+      const [response] = await Promise.all([
+        fetch('/data.json'),
+        delay(SIMULATED_LOAD_DELAY_MS),
+      ]);
       if (!response.ok) throw new Error('No se pudo cargar data.json');
       const contacts = await response.json() as Contact[];
-      await new Promise((resolve) => setTimeout(resolve, 700));
       set({ contacts, status: 'success' });
     } catch {
       set({ status: 'error' });

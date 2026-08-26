@@ -4,13 +4,13 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 
 ## Funcionalidades
 
-- Carga inicial desde `public/data.json` con skeleton loading.
+- Carga inicial simulada desde `public/data.json` con skeleton loading y latencia controlada.
 - Búsqueda reactiva por nombre.
 - Filtros combinables por departamento y contador de resultados.
 - Alta de contactos en modal con Formik, Yup y UUID nativo.
 - Validación en tiempo real y bloqueo de envío cuando el formulario es inválido.
 - Eliminación con confirmación para prevenir errores.
-- Empty states diferenciados para directorio vacío y filtros sin coincidencias.
+- Empty states diferenciados para directorio vacío y búsqueda o filtros sin coincidencias.
 - Feedback mediante notificaciones accesibles.
 - Diseño responsive para escritorio, tablet y móvil.
 - Navegación por teclado, foco visible, etiquetas semánticas y soporte para movimiento reducido.
