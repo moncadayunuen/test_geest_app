@@ -1,12 +1,12 @@
 'use client';
 
 import { Form, Formik } from 'formik';
-import { useEffect, useRef } from 'react';
 import { Icon } from '@/components/icon/icon';
 import { contactSchema } from '@/lib/contacts';
 import { DEPARTMENTS, type Contact, type ContactFormValues } from '@/types/contact';
 import { TextField } from '@/components/text-field/text-field';
 import { useModalExit } from '@/hooks/use-modal-exit';
+import { useDialogAccessibility } from '@/hooks/use-dialog-accessibility';
 import './add-contact-modal.scss';
 
 type Props = {
@@ -15,23 +15,8 @@ type Props = {
 };
 
 export function AddContactModal({ onClose, onAdd }: Props) {
-  const modalRef = useRef<HTMLDivElement>(null);
   const { isClosing, requestClose } = useModalExit(onClose);
-
-  useEffect(() => {
-    const previous = document.activeElement as HTMLElement | null;
-    modalRef.current?.querySelector<HTMLInputElement>('input')?.focus();
-    const handleKey = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') requestClose();
-    };
-    document.addEventListener('keydown', handleKey);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', handleKey);
-      document.body.style.overflow = '';
-      previous?.focus();
-    };
-  }, [requestClose]);
+  const modalRef = useDialogAccessibility(requestClose, 'input');
 
   const submit = (values: ContactFormValues) => {
     onAdd({

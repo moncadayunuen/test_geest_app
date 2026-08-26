@@ -1,20 +1,20 @@
 # Nexo - Gestor de contactos
 
-Nexo es una interfaz web para administrar el directorio de un equipo. El proyecto fue desarrollado como prueba técnica frontend con especial atención a UX, accesibilidad, estados del sistema y calidad visual.
+Nexo es una interfaz web para consultar y administrar el directorio de un equipo. Está desarrollada como una prueba técnica frontend con Next.js y datos locales.
 
 ## Funcionalidades
 
-- Carga inicial simulada desde `public/data.json` con skeleton loading y latencia controlada.
+- Carga inicial desde `public/data.json`, con estados de carga y error.
 - Búsqueda reactiva por nombre.
 - Filtros combinables por departamento y contador de resultados.
-- Tabla completa con scroll horizontal en escritorio y tooltips para correo y teléfono.
+- Tabla adaptable con tooltips para correo y teléfono; el scroll horizontal aparece sólo cuando el ancho disponible lo requiere.
 - Alta de contactos en modal con Formik, Yup y UUID nativo.
 - Validación en tiempo real y bloqueo de envío cuando el formulario es inválido.
 - Eliminación con confirmación para prevenir errores.
 - Empty states diferenciados para directorio vacío y búsqueda o filtros sin coincidencias.
 - Feedback mediante notificaciones accesibles.
 - Diseño responsive con filas desplegables y scroll táctil en móvil.
-- Navegación por teclado, cierre de modales con `Escape`, foco visible, etiquetas semánticas y soporte para movimiento reducido.
+- Navegación por teclado, foco contenido dentro de los modales, cierre con `Escape`, restauración de foco y soporte para movimiento reducido.
 
 ## Stack
 
@@ -47,8 +47,6 @@ El proyecto utiliza el preset de Next.js y genera la salida de producción en `.
 - Output Directory: dejar vacío para que Vercel utilice el valor de Next.js
 - Node.js: 22.x o superior
 
-No configures `dist` como Output Directory: esa carpeta pertenecía al build anterior con Vinext/Vite.
-
 ## Comandos
 
 ```bash
@@ -58,24 +56,22 @@ npm run start    # Ejecutar la compilación
 npm run lint     # Revisión estática
 ```
 
-## Decisiones de UX/UI
+## Decisiones principales
 
-- **Jerarquía operativa:** la acción principal, la búsqueda, los filtros y el directorio aparecen en el orden natural de trabajo.
-- **Prevención de errores:** validación contextual, botón deshabilitado y confirmación antes de eliminar.
-- **Visibilidad del estado:** skeleton, contadores, mensajes vacíos, errores de carga y confirmaciones mantienen informada a la persona usuaria.
-- **Filtros comprensibles:** los chips muestran la cantidad disponible y se combinan con la búsqueda sin pasos adicionales.
-- **Datos legibles:** correo y teléfono conservan el ancho de la tabla y muestran su valor completo mediante tooltip.
-- **Responsive por contexto:** la tabla mantiene todas las columnas con desplazamiento horizontal en escritorio; en móvil prioriza nombre, ID, avatar y acciones, dejando el resto bajo demanda.
-- **Escalabilidad visual:** los componentes y tokens mantienen consistencia y permiten extender el sistema a más vistas.
+- La búsqueda y el filtro por departamento se calculan en memoria porque la fuente de datos es pequeña y local.
+- Zustand mantiene los contactos y sus acciones fuera de los componentes de presentación.
+- Formik administra el formulario y Yup concentra sus reglas de validación.
+- Antes de eliminar un contacto se solicita confirmación; las altas y eliminaciones muestran una notificación temporal.
+- En móvil, cada contacto muestra primero la información esencial y permite desplegar el resto.
+- Los modales bloquean el scroll de fondo, contienen el foco y lo devuelven al elemento que los abrió.
 
 ## Convenciones de código y estilos
 
 - JSX y TypeScript se escriben con indentación por bloques para mantener clara la jerarquía del DOM y la lógica.
-- Cada componente conserva su SCSS co-localizado y utiliza BEM para elementos y modificadores propios.
-- Sass comparte colores, radios, sombras y mixins mediante `@use` desde `styles/_tokens.scss`.
-- Tailwind se referencia con `@reference` y sus utilidades se agrupan con `@apply` únicamente para layout repetitivo.
-- La cascada queda ordenada de base a componente, estados, animaciones y media queries.
-- Los hooks mantienen un flujo predecible: estado local, valores derivados, acciones y retorno público.
+- Cada componente visual conserva un archivo SCSS junto a su TSX.
+- Los estilos usan utilidades de Tailwind mediante `@apply`; Sass se conserva para anidación, tokens, animaciones y reglas que no tienen una utilidad clara.
+- Los modificadores visuales propios siguen una nomenclatura BEM, por ejemplo `contact-filters__option--selected`.
+- La lógica compartida de filtros, mensajes y accesibilidad de diálogos vive en hooks separados.
 
 ## Estructura principal
 
@@ -102,6 +98,7 @@ components/
   */                  Cada componente contiene su TSX y SCSS
 hooks/
   use-contact-filters.ts Filtrado y conteos derivados
+  use-dialog-accessibility.ts Gestión de foco, teclado y scroll en diálogos
   use-modal-exit.ts      Transición y desmontaje de modales
   use-timed-message.ts   Ciclo de vida de notificaciones
 stores/

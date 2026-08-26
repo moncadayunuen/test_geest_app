@@ -38,8 +38,7 @@ export function ContactManager() {
   const loadError = status === 'error';
 
   useEffect(() => {
-    const timer = window.setTimeout(() => void loadContacts(), 0);
-    return () => window.clearTimeout(timer);
+    void loadContacts();
   }, [loadContacts]);
 
   const addContact = (contact: Contact) => {

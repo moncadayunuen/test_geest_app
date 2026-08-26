@@ -1,6 +1,7 @@
 'use client';
 
 import type { ReactNode } from 'react';
+import { useDialogAccessibility } from '@/hooks/use-dialog-accessibility';
 import { useModalExit } from '@/hooks/use-modal-exit';
 import './confirmation-modal.scss';
 
@@ -22,6 +23,7 @@ export function ConfirmationModal({
   onConfirm,
 }: Props) {
   const { isClosing, requestClose } = useModalExit(onClose);
+  const dialogRef = useDialogAccessibility(requestClose, '.secondary-button');
 
   const confirm = () => {
     onConfirm();
@@ -36,6 +38,7 @@ export function ConfirmationModal({
     >
       <div
         className="confirm-card"
+        ref={dialogRef}
         role="alertdialog"
         aria-modal="true"
         aria-labelledby="delete-title"
@@ -45,7 +48,7 @@ export function ConfirmationModal({
         <h2 id="delete-title">{title}</h2>
         <p id="delete-description">{description}</p>
         <div>
-          <button className="secondary-button" type="button" autoFocus onClick={requestClose}>
+          <button className="secondary-button" type="button" onClick={requestClose}>
             Cancelar
           </button>
           <button className="danger-button" type="button" onClick={confirm}>
