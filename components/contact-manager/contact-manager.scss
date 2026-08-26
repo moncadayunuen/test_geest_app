@@ -49,6 +49,8 @@
     background: linear-gradient(145deg, #0ba650, #0756a4);
     color: $color-white;
   }
+
+  .mobile-directory-status { display: none; }
 }
 
 .layout {
@@ -419,6 +421,21 @@
 @media (max-width: 640px) {
   .topbar { width: 100%; height: 64px; padding-inline: 18px; border-bottom: 1px solid #e4e8ef; }
   .topbar .brand > span:last-child { display: inline; }
+  .topbar .mobile-directory-status {
+    @apply flex items-center;
+    margin-left: auto;
+    gap: 7px;
+    color: $color-muted;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      margin: 0;
+    }
+  }
   .layout {
     display: flex;
     height: 100dvh;

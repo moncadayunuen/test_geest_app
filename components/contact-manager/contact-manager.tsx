@@ -73,6 +73,10 @@ export function ContactManager() {
               <span className="brand-mark"><Icon name="brand" size={20} /></span>
               <span>Nexo</span>
             </a>
+            <span className="mobile-directory-status">
+              <span className="status-dot" />
+              Directorio activo
+            </span>
           </header>
           <nav>
             <a className="nav-item active" href="#main-content" aria-current="page">
