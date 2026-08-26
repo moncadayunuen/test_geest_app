@@ -76,6 +76,12 @@ export function ContactManager() {
     showMessage(`${pendingDelete.name} se eliminó del directorio`);
   };
 
+  const submitSearch = () => {
+    searchRef.current?.blur();
+    const resultLabel = filteredContacts.length === 1 ? 'resultado' : 'resultados';
+    showMessage(`${filteredContacts.length} ${resultLabel} para la búsqueda`);
+  };
+
   const directoryContent = loading
     ? <SkeletonList />
     : loadError
@@ -144,7 +150,14 @@ export function ContactManager() {
               </div>
 
               <div className="toolbar-actions">
-                <div className="search-control">
+                <form
+                  className="search-control"
+                  role="search"
+                  onSubmit={(event) => {
+                    event.preventDefault();
+                    submitSearch();
+                  }}
+                >
                   <span className="search-label">Buscar contactos</span>
                   <label className="search-field">
                     <Icon name="search" size={20} />
@@ -156,7 +169,10 @@ export function ContactManager() {
                       placeholder="Escribe un nombre…"
                     />
                   </label>
-                </div>
+                  <button className="sr-only" type="submit">
+                    Buscar
+                  </button>
+                </form>
                 {hasFilters && (
                   <button className="secondary-button clear-button" type="button" onClick={clearFilters}>
                     <Icon name="reset" size={14} /> Limpiar filtros
