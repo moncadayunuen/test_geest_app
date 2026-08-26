@@ -1,6 +1,7 @@
 .empty-state { text-align: center; }
 .skeleton-list {
   display: grid;
+  min-width: 1080px;
   overflow: hidden;
 
   .skeleton-table-head {
@@ -46,26 +47,9 @@
 
 @keyframes directory-shimmer { to { background-position: -200% 0; } }
 
-@media (max-width: 1100px) {
-  .skeleton-list {
-    .skeleton-table-head { grid-template-columns: 1fr minmax(180px, 1fr) 105px; }
-    .skeleton-table-head i:nth-child(3) { display: none; }
-    .skeleton-row { grid-template-columns: 42px 1fr minmax(180px, 1fr) 105px 34px; }
-    .skeleton-phone { display: none; }
-  }
-}
-
-@media (max-width: 900px) {
-  .skeleton-list {
-    .skeleton-table-head { grid-template-columns: 1fr 105px; }
-    .skeleton-table-head i:nth-child(2) { display: none; }
-    .skeleton-row { grid-template-columns: 42px 1fr 105px 34px; }
-    .skeleton-email { display: none; }
-  }
-}
-
 @media (max-width: 640px) {
   .skeleton-list {
+    min-width: 0;
     gap: 8px;
     background: #f7f8fb;
     .skeleton-table-head { display: none; }

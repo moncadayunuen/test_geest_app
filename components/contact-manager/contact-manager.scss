@@ -210,7 +210,20 @@
   input:focus-visible { outline: 0; }
 }
 
-.filter-result { animation: filter-in .2s ease both; }
+.filter-result {
+  overflow-x: auto;
+  animation: filter-in .2s ease both;
+  scrollbar-color: #9eb1ca #edf1f6;
+  scrollbar-width: thin;
+
+  &::-webkit-scrollbar { height: 10px; }
+  &::-webkit-scrollbar-track { background: #edf1f6; }
+  &::-webkit-scrollbar-thumb {
+    border: 2px solid #edf1f6;
+    border-radius: 10px;
+    background: #9eb1ca;
+  }
+}
 
 .avatar {
   @apply grid place-items-center;
@@ -339,13 +352,6 @@
 @keyframes modal-out { to { opacity: 0; transform: translateY(5px) scale(.99); } }
 @keyframes toast-in { from { opacity: 0; transform: translateY(12px); } }
 
-@media (max-width: 1100px) {
-  .contact-table-head,
-  .contact-row { grid-template-columns: 42px 1fr minmax(180px, 1fr) 105px 34px; }
-  .head-phone,
-  .phone-link { display: none !important; }
-}
-
 @media (max-width: 900px) {
   .topbar { width: 76px; padding-inline: 18px; }
   .topbar .brand > span:last-child { display: none; }
@@ -354,10 +360,6 @@
   .sidebar .nav-item { justify-content: center; font-size: 0; }
   .sidebar .sidebar-note { display: none; }
   .content { margin-left: 18px; }
-  .contact-table-head,
-  .contact-row { grid-template-columns: 42px 1fr 105px 34px; }
-  .head-email,
-  .contact-row > a[href^='mailto:'] { display: none; }
 }
 
 @media (max-width: 640px) {
@@ -372,6 +374,7 @@
   .toolbar-actions { align-items: stretch; flex-direction: column; }
   .toolbar-actions .clear-button { align-self: flex-end; }
   .directory-toolbar { padding-inline: 16px; }
+  .filter-result { overflow-x: visible; }
   .contact-table-head { display: none; }
   .contact-list { gap: 8px; background: #f7f8fb; }
   .contact-row {

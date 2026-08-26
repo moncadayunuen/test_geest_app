@@ -1,5 +1,6 @@
 .contact-list {
   display: grid;
+  min-width: 1080px;
 
   .contact-table-head {
     min-height: 48px;
@@ -52,6 +53,8 @@
 
 @media (max-width: 640px) {
   .contact-list {
+    min-width: 0;
+
     .contact-row { min-height: 70px; border-left-width: 4px; }
     .contact-row.expanded > .department-tag { display: inline-flex !important; }
   }
