@@ -24,12 +24,12 @@
 
 .topbar {
   @apply flex items-center;
-  width: 224px;
+  width: 100%;
   height: 72px;
   padding-inline: 28px;
-  border-right: 1px solid #e4e8ef;
+  border-bottom: 1px solid #e4e8ef;
   background: $color-white;
-  box-shadow: 4px 0 18px rgba(8, 31, 75, .04);
+  box-shadow: 0 4px 18px rgba(8, 31, 75, .06);
 
   .brand {
     @apply flex items-center;
@@ -49,26 +49,28 @@
     background: linear-gradient(145deg, #0ba650, #0756a4);
     color: $color-white;
   }
-
-  .topbar-actions { display: none; }
 }
 
 .layout {
   @apply grid;
-  height: calc(100dvh - 72px);
+  height: 100dvh;
   grid-template-columns: 224px minmax(0, 1fr);
   overflow: hidden;
   background: $color-canvas;
 }
 
 .sidebar {
-  @apply flex flex-col justify-between;
+  @apply flex flex-col;
   min-height: 0;
-  padding: 24px 14px 20px;
+  padding: 0 0 20px;
   overflow: hidden;
   background: linear-gradient(150deg, #07529d, #003b83);
 
-  nav { @apply grid; gap: 6px; }
+  nav {
+    @apply grid;
+    gap: 6px;
+    padding: 24px 14px;
+  }
 
   .nav-item {
     @apply flex items-center;
@@ -91,6 +93,8 @@
   .sidebar-note {
     @apply flex items-start;
     gap: 10px;
+    margin-top: auto;
+    margin-inline: 14px;
     padding: 14px 12px;
     border-top: 1px solid rgba($color-white, .18);
     color: $color-white;
@@ -406,7 +410,7 @@
   .topbar { width: 76px; padding-inline: 18px; }
   .topbar .brand > span:last-child { display: none; }
   .layout { grid-template-columns: 76px minmax(0, 1fr); }
-  .sidebar { padding-inline: 11px; }
+  .sidebar nav { padding-inline: 11px; }
   .sidebar .nav-item { justify-content: center; font-size: 0; }
   .sidebar .sidebar-note { display: none; }
   .content { margin-left: 18px; }
@@ -415,10 +419,24 @@
 @media (max-width: 640px) {
   .topbar { width: 100%; height: 64px; padding-inline: 18px; border-bottom: 1px solid #e4e8ef; }
   .topbar .brand > span:last-child { display: inline; }
-  .layout { display: block; height: calc(100dvh - 64px); }
-  .sidebar { display: none; }
+  .layout {
+    display: flex;
+    height: 100dvh;
+    flex-direction: column;
+  }
+  .sidebar {
+    display: block;
+    min-height: 64px;
+    flex: 0 0 64px;
+    padding: 0;
+    overflow: visible;
+    background: $color-white;
+  }
+  .sidebar nav,
+  .sidebar .sidebar-note { display: none; }
   .content {
-    height: 100%;
+    min-height: 0;
+    flex: 1;
     margin: 0;
     padding: 24px 16px 42px;
     overflow-y: auto;

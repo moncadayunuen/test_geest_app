@@ -66,19 +66,14 @@ export function ContactManager() {
     <main className="app-shell">
       <a className="skip-link" href="#main-content">Saltar al contenido</a>
 
-      <header className="topbar">
-        <a className="brand" href="#main-content" aria-label="Nexo, ir al contenido">
-          <span className="brand-mark"><Icon name="brand" size={20} /></span>
-          <span>Nexo</span>
-        </a>
-        <div className="topbar-actions">
-          <span className="workspace-label">Espacio de trabajo</span>
-          <span className="avatar avatar-small">YM</span>
-        </div>
-      </header>
-
       <div className="layout">
         <aside className="sidebar" aria-label="Navegación principal">
+          <header className="topbar">
+            <a className="brand" href="#main-content" aria-label="Nexo, ir al contenido">
+              <span className="brand-mark"><Icon name="brand" size={20} /></span>
+              <span>Nexo</span>
+            </a>
+          </header>
           <nav>
             <a className="nav-item active" href="#main-content" aria-current="page">
               <Icon name="users" size={19} /> Contactos
