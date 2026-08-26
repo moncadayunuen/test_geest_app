@@ -1,12 +1,11 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AddContactModal } from '@/components/add-contact-modal/add-contact-modal';
 import { AnnouncementBanner } from '@/components/announcement-banner/announcement-banner';
 import { ConfirmationModal } from '@/components/confirmation-modal/confirmation-modal';
 import { ContactFilters } from '@/components/contact-filters/contact-filters';
 import { ContactList } from '@/components/contact-list/contact-list';
-import { DirectoryCommands } from '@/components/directory-commands/directory-commands';
 import { EmptyState, LoadError, SkeletonList } from '@/components/directory-state/directory-state';
 import { Icon } from '@/components/icon/icon';
 import { useContactFilters } from '@/hooks/use-contact-filters';
@@ -16,7 +15,6 @@ import type { Contact } from '@/types/contact';
 import './contact-manager.scss';
 
 export function ContactManager() {
-  const searchRef = useRef<HTMLInputElement>(null);
   const contacts = useContactStore((state) => state.contacts);
   const status = useContactStore((state) => state.status);
   const loadContacts = useContactStore((state) => state.loadContacts);
@@ -43,26 +41,6 @@ export function ContactManager() {
     const timer = window.setTimeout(() => void loadContacts(), 0);
     return () => window.clearTimeout(timer);
   }, [loadContacts]);
-
-  useEffect(() => {
-    const handleCommand = (event: KeyboardEvent) => {
-      const target = event.target as HTMLElement;
-      const isWriting = target.matches('input, textarea, select, [contenteditable="true"]');
-
-      if (event.key === '/' && !isWriting) {
-        event.preventDefault();
-        searchRef.current?.focus();
-      }
-
-      if (event.key.toLowerCase() === 'n' && !isWriting) {
-        event.preventDefault();
-        setShowAdd(true);
-      }
-    };
-
-    document.addEventListener('keydown', handleCommand);
-    return () => document.removeEventListener('keydown', handleCommand);
-  }, []);
 
   const addContact = (contact: Contact) => {
     addContactToStore(contact);
@@ -150,7 +128,6 @@ export function ContactManager() {
                     <Icon name="search" size={20} />
                     <span className="sr-only">Buscar por nombre</span>
                     <input
-                      ref={searchRef}
                       value={query}
                       onChange={(event) => setQuery(event.target.value)}
                       placeholder="Escribe un nombre…"
@@ -164,11 +141,6 @@ export function ContactManager() {
                 )}
               </div>
             </div>
-
-            <DirectoryCommands
-              onSearch={() => searchRef.current?.focus()}
-              onAdd={() => setShowAdd(true)}
-            />
 
             <ContactFilters
               value={department}

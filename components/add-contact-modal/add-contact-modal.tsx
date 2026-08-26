@@ -72,7 +72,8 @@ export function AddContactModal({ onClose, onAdd }: Props) {
             type="button"
             className="icon-button"
             onClick={requestClose}
-            aria-label="Cerrar formulario"
+            aria-label="Cerrar formulario con Escape"
+            title="Cerrar (Escape)"
           >
             <Icon name="close" size={19} />
           </button>

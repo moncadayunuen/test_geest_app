@@ -417,7 +417,16 @@
   .topbar .brand > span:last-child { display: inline; }
   .layout { display: block; height: calc(100dvh - 64px); }
   .sidebar { display: none; }
-  .content { margin: 0; padding: 24px 16px 42px; border: 0; border-radius: 0; box-shadow: none; }
+  .content {
+    height: 100%;
+    margin: 0;
+    padding: 24px 16px 42px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
   .page-heading { align-items: flex-start; flex-direction: column; gap: 20px; padding-top: 0; }
   .page-heading h1 { font-size: 28px; }
   .page-heading > .primary-button { width: 100%; }
@@ -444,6 +453,17 @@
   .contact-row.expanded > a[href^='mailto:'] { grid-area: email; display: flex !important; padding-top: 12px; }
   .contact-row.expanded > .phone-link { grid-area: phone; display: flex !important; padding-top: 7px; }
   .contact-row.expanded > .department-tag { grid-area: department; display: inline-flex !important; margin-top: 8px; }
-  .modal-backdrop { align-items: end; padding: 0; }
+  .modal-backdrop {
+    align-items: end;
+    padding: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .modal-card {
+    max-height: calc(100dvh - 12px);
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .toast { right: 16px; bottom: 16px; left: 16px; }
 }
