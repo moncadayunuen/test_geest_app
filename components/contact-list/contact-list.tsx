@@ -36,17 +36,24 @@ export function ContactList({ contacts, onDelete }: Props) {
               <strong>{contact.name}</strong>
               <span>ID · {contact.id.slice(0, 8)}</span>
             </div>
-            <a href={`mailto:${contact.email}`}>
+            <a
+              className="contact-link email-link"
+              href={`mailto:${contact.email}`}
+              data-tooltip={contact.email}
+            >
               <Icon name="mail" size={13} />
-              {contact.email}
+              <span className="contact-link__value">{contact.email}</span>
             </a>
             <a
-              className="phone-link"
+              className="contact-link phone-link"
               href={contact.phone ? `tel:${contact.phone}` : undefined}
+              data-tooltip={contact.phone || 'Sin teléfono registrado'}
               aria-label={contact.phone ? `Llamar a ${contact.name}` : 'Sin teléfono'}
             >
               <Icon name="phone" size={13} />
-              {contact.phone || 'Sin teléfono'}
+              <span className="contact-link__value">
+                {contact.phone || 'Sin teléfono'}
+              </span>
             </a>
             <span className="department-tag">{contact.department}</span>
             <div className="row-actions">
