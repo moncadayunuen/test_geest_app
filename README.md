@@ -54,6 +54,14 @@ npm run lint     # Revisión estática
 - **Filtros comprensibles:** los chips muestran la cantidad disponible y se combinan con la búsqueda sin pasos adicionales.
 - **Escalabilidad visual:** los componentes y tokens mantienen consistencia y permiten extender el sistema a más vistas.
 
+## Convenciones de código y estilos
+
+- JSX y TypeScript se escriben con indentación por bloques para mantener clara la jerarquía del DOM y la lógica.
+- Cada componente conserva su SCSS co-localizado y utiliza BEM para elementos y modificadores propios.
+- Sass comparte colores, radios, sombras y mixins mediante `@use` desde `styles/_tokens.scss`.
+- Tailwind se referencia con `@reference` y sus utilidades se agrupan con `@apply` únicamente para layout repetitivo.
+- La cascada queda ordenada de base a componente, estados, animaciones y media queries.
+
 ## Estructura principal
 
 ```text
@@ -64,6 +72,8 @@ app/
   globals.scss     Tokens, reset y estilos base
 config/
   site.ts          Configuración centralizada de SEO y dominio
+styles/
+  _tokens.scss     Tokens y mixins compartidos con Sass
 components/
   icon/                Iconografía SVG propia y tipada
   announcement-banner/ Resumen contextual descartable

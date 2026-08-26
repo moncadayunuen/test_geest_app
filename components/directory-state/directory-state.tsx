@@ -12,6 +12,26 @@ export function SkeletonList() {
 }
 
 type EmptyProps = { filtered: boolean; onClear: () => void; onAdd: () => void };
-export function EmptyState({ filtered, onClear, onAdd }: EmptyProps) { return <div className="empty-state"><span className="empty-icon">{filtered ? <Icon name="search" size={25} /> : <Icon name="users" size={25} />}</span><h3>{filtered ? 'No encontramos coincidencias' : 'Tu directorio está listo para crecer'}</h3><p>{filtered ? 'Prueba con otro nombre o cambia el departamento.' : 'Agrega el primer contacto para comenzar.'}</p>{filtered ? <button className="secondary-button" type="button" onClick={onClear}>Limpiar filtros</button> : <button className="primary-button" type="button" onClick={onAdd}><Icon name="plus" size={17} /> Agregar contacto</button>}</div>; }
+export function EmptyState({ filtered, onClear, onAdd }: EmptyProps) {
+  return (
+    <div className="empty-state">
+      <span className="empty-icon">{filtered ? <Icon name="search" size={25} /> : <Icon name="users" size={25} />}</span>
+      <h3>{filtered ? 'No encontramos coincidencias' : 'Tu directorio está listo para crecer'}</h3>
+      <p>{filtered ? 'Prueba con otro nombre o cambia el departamento.' : 'Agrega el primer contacto para comenzar.'}</p>
+      {filtered
+        ? <button className="secondary-button" type="button" onClick={onClear}>Limpiar filtros</button>
+        : <button className="primary-button" type="button" onClick={onAdd}><Icon name="plus" size={17} /> Agregar contacto</button>}
+    </div>
+  );
+}
 
-export function LoadError({ onRetry }: { onRetry: () => void }) { return <div className="empty-state"><span className="empty-icon warning"><Icon name="warning" size={25} /></span><h3>No pudimos cargar el directorio</h3><p>Verifica la fuente de datos e inténtalo nuevamente.</p><button className="secondary-button" type="button" onClick={onRetry}>Reintentar</button></div>; }
+export function LoadError({ onRetry }: { onRetry: () => void }) {
+  return (
+    <div className="empty-state">
+      <span className="empty-icon warning"><Icon name="warning" size={25} /></span>
+      <h3>No pudimos cargar el directorio</h3>
+      <p>Verifica la fuente de datos e inténtalo nuevamente.</p>
+      <button className="secondary-button" type="button" onClick={onRetry}>Reintentar</button>
+    </div>
+  );
+}

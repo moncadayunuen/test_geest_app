@@ -1,0 +1,17 @@
+$color-navy: #071b4d;
+$color-blue: #0667f7;
+$color-blue-dark: #0058db;
+$color-green: #19ae50;
+$color-muted: #52658f;
+$color-line: #dce3ed;
+$color-canvas: #f4f6f8;
+$color-white: #fff;
+
+$radius-sm: 6px;
+$radius-md: 9px;
+$shadow-panel: 0 5px 20px rgba(14, 35, 72, .06);
+
+@mixin focus-ring {
+  outline: 3px solid rgba($color-blue, .18);
+  outline-offset: 2px;
+}
