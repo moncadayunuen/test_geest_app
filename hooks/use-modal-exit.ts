@@ -10,18 +10,30 @@ export function useModalExit(onExited: () => void) {
   const onExitedRef = useRef(onExited);
   const timeoutRef = useRef<number | null>(null);
 
-  useEffect(() => { onExitedRef.current = onExited; }, [onExited]);
+  useEffect(() => {
+    onExitedRef.current = onExited;
+  }, [onExited]);
 
   const requestClose = useCallback(() => {
     if (isClosingRef.current) return;
+
     isClosingRef.current = true;
     setIsClosing(true);
-    timeoutRef.current = window.setTimeout(() => onExitedRef.current(), EXIT_DURATION);
+    timeoutRef.current = window.setTimeout(() => {
+      onExitedRef.current();
+    }, EXIT_DURATION);
   }, []);
 
-  useEffect(() => () => {
-    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current !== null) {
+        window.clearTimeout(timeoutRef.current);
+      }
+    };
   }, []);
 
-  return { isClosing, requestClose };
+  return {
+    isClosing,
+    requestClose,
+  };
 }

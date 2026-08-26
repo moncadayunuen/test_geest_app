@@ -7,13 +7,14 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 - Carga inicial simulada desde `public/data.json` con skeleton loading y latencia controlada.
 - Búsqueda reactiva por nombre.
 - Filtros combinables por departamento y contador de resultados.
+- Tabla completa con scroll horizontal en escritorio y tooltips para correo y teléfono.
 - Alta de contactos en modal con Formik, Yup y UUID nativo.
 - Validación en tiempo real y bloqueo de envío cuando el formulario es inválido.
 - Eliminación con confirmación para prevenir errores.
 - Empty states diferenciados para directorio vacío y búsqueda o filtros sin coincidencias.
 - Feedback mediante notificaciones accesibles.
-- Diseño responsive para escritorio, tablet y móvil.
-- Navegación por teclado, foco visible, etiquetas semánticas y soporte para movimiento reducido.
+- Diseño responsive con filas desplegables y scroll táctil en móvil.
+- Navegación por teclado, cierre de modales con `Escape`, foco visible, etiquetas semánticas y soporte para movimiento reducido.
 
 ## Stack
 
@@ -52,6 +53,8 @@ npm run lint     # Revisión estática
 - **Prevención de errores:** validación contextual, botón deshabilitado y confirmación antes de eliminar.
 - **Visibilidad del estado:** skeleton, contadores, mensajes vacíos, errores de carga y confirmaciones mantienen informada a la persona usuaria.
 - **Filtros comprensibles:** los chips muestran la cantidad disponible y se combinan con la búsqueda sin pasos adicionales.
+- **Datos legibles:** correo y teléfono conservan el ancho de la tabla y muestran su valor completo mediante tooltip.
+- **Responsive por contexto:** la tabla mantiene todas las columnas con desplazamiento horizontal en escritorio; en móvil prioriza nombre, ID, avatar y acciones, dejando el resto bajo demanda.
 - **Escalabilidad visual:** los componentes y tokens mantienen consistencia y permiten extender el sistema a más vistas.
 
 ## Convenciones de código y estilos
@@ -61,6 +64,7 @@ npm run lint     # Revisión estática
 - Sass comparte colores, radios, sombras y mixins mediante `@use` desde `styles/_tokens.scss`.
 - Tailwind se referencia con `@reference` y sus utilidades se agrupan con `@apply` únicamente para layout repetitivo.
 - La cascada queda ordenada de base a componente, estados, animaciones y media queries.
+- Los hooks mantienen un flujo predecible: estado local, valores derivados, acciones y retorno público.
 
 ## Estructura principal
 
@@ -80,7 +84,7 @@ components/
   text-field/          Control de formulario reutilizable
   confirmation-modal/ Modal de confirmación configurable
   add-contact-modal/  Formulario de alta del dominio
-  contact-list/       Tabla responsive de contactos
+  contact-list/       Tabla, tooltips y detalle responsive de contactos
   contact-filters/    Chips de departamento con conteos
   directory-state/    Estados de carga, error y vacío
   contact-manager/    Composición de la vista y estado
