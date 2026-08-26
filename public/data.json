@@ -1,14 +1,85 @@
 [
-  { "id": "3c0d59d2-0bcf-4b42-a935-4e3d277f0f01", "name": "Ana Martínez", "email": "ana.martinez@nexo.mx", "phone": "+52 55 2841 3090", "department": "Ventas" },
-  { "id": "d68ca560-4dd7-4607-b8dc-9590a12bc102", "name": "Diego Luna", "email": "diego.luna@nexo.mx", "phone": "+52 55 1840 7712", "department": "Desarrollo" },
-  { "id": "9057bac8-dc69-41a2-9606-4d252dc7d203", "name": "Sofía Castro", "email": "sofia.castro@nexo.mx", "phone": "+52 81 8260 4092", "department": "Marketing" },
-  { "id": "847f3b8f-5c9c-48c1-a18d-551322123304", "name": "Mateo Herrera", "email": "mateo.herrera@nexo.mx", "phone": "+52 55 9177 2016", "department": "Soporte" },
-  { "id": "9265eb24-f5a3-4c0e-94e3-a00d6791f405", "name": "Renata Aguilar", "email": "renata.aguilar@nexo.mx", "phone": "+52 33 2018 6604", "department": "Desarrollo" },
-  { "id": "4da8268b-98cf-4503-91b8-2e875d89c506", "name": "Emilio Vargas", "email": "emilio.vargas@nexo.mx", "department": "Ventas" },
-  { "id": "f6bfda4f-f21b-4823-9d6a-b1cfa8edb607", "name": "Camila Reyes", "email": "camila.reyes@nexo.mx", "phone": "+52 55 6607 1021", "department": "Desarrollo" },
-  { "id": "c174ef81-7e18-40b3-af22-44f21928b708", "name": "Nicolás Ortiz", "email": "nicolas.ortiz@nexo.mx", "phone": "+52 81 4498 3025", "department": "Soporte" },
-  { "id": "1368883a-c68f-4526-91cc-c2b7479fe809", "name": "Valentina Cruz", "email": "valentina.cruz@nexo.mx", "phone": "+52 55 7381 1169", "department": "Marketing" },
-  { "id": "9c4025d2-aee9-43bb-8dbd-29dcc2029a10", "name": "Santiago Ríos", "email": "santiago.rios@nexo.mx", "phone": "+52 33 6097 7240", "department": "Ventas" },
-  { "id": "28bf375f-2f1d-43f9-bc10-90392a96cb11", "name": "Isabella Mendoza", "email": "isabella.mendoza@nexo.mx", "phone": "+52 55 2940 7738", "department": "Desarrollo" },
-  { "id": "a12ebc42-eef9-4f82-8134-493293660b12", "name": "Leonardo Flores", "email": "leonardo.flores@nexo.mx", "phone": "+52 81 4439 7260", "department": "Soporte" }
+  {
+    "id": "3c0d59d2-0bcf-4b42-a935-4e3d277f0f01",
+    "name": "Ana Martínez",
+    "email": "ana.martinez@nexo.mx",
+    "phone": "+52 55 2841 3090",
+    "department": "Ventas"
+  },
+  {
+    "id": "d68ca560-4dd7-4607-b8dc-9590a12bc102",
+    "name": "Diego Luna",
+    "email": "diego.luna@nexo.mx",
+    "phone": "+52 55 1840 7712",
+    "department": "Desarrollo"
+  },
+  {
+    "id": "9057bac8-dc69-41a2-9606-4d252dc7d203",
+    "name": "Sofía Castro",
+    "email": "sofia.castro@nexo.mx",
+    "phone": "+52 81 8260 4092",
+    "department": "Marketing"
+  },
+  {
+    "id": "847f3b8f-5c9c-48c1-a18d-551322123304",
+    "name": "Mateo Herrera",
+    "email": "mateo.herrera@nexo.mx",
+    "phone": "+52 55 9177 2016",
+    "department": "Soporte"
+  },
+  {
+    "id": "9265eb24-f5a3-4c0e-94e3-a00d6791f405",
+    "name": "Renata Aguilar",
+    "email": "renata.aguilar@nexo.mx",
+    "phone": "+52 33 2018 6604",
+    "department": "Desarrollo"
+  },
+  {
+    "id": "4da8268b-98cf-4503-91b8-2e875d89c506",
+    "name": "Emilio Vargas",
+    "email": "emilio.vargas@nexo.mx",
+    "department": "Ventas"
+  },
+  {
+    "id": "f6bfda4f-f21b-4823-9d6a-b1cfa8edb607",
+    "name": "Camila Reyes",
+    "email": "camila.reyes@nexo.mx",
+    "phone": "+52 55 6607 1021",
+    "department": "Desarrollo"
+  },
+  {
+    "id": "c174ef81-7e18-40b3-af22-44f21928b708",
+    "name": "Nicolás Ortiz",
+    "email": "nicolas.ortiz@nexo.mx",
+    "phone": "+52 81 4498 3025",
+    "department": "Soporte"
+  },
+  {
+    "id": "1368883a-c68f-4526-91cc-c2b7479fe809",
+    "name": "Valentina Cruz",
+    "email": "valentina.cruz@nexo.mx",
+    "phone": "+52 55 7381 1169",
+    "department": "Marketing"
+  },
+  {
+    "id": "9c4025d2-aee9-43bb-8dbd-29dcc2029a10",
+    "name": "Santiago Ríos",
+    "email": "santiago.rios@nexo.mx",
+    "phone": "+52 33 6097 7240",
+    "department": "Ventas"
+  },
+  {
+    "id": "28bf375f-2f1d-43f9-bc10-90392a96cb11",
+    "name": "Isabella Mendoza",
+    "email": "isabella.mendoza@nexo.mx",
+    "phone": "+52 55 2940 7738",
+    "department": "Desarrollo"
+  },
+  {
+    "id": "a12ebc42-eef9-4f82-8134-493293660b12",
+    "name": "Leonardo Flores",
+    "email": "leonardo.flores@nexo.mx",
+    "phone": "+52 81 4439 7260",
+    "department": "Soporte"
+  }
 ]

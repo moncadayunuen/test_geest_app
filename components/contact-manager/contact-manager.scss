@@ -2,88 +2,43 @@
 @reference '../../app/vendor.css';
 
 .app-shell {
-  height: 100dvh;
-  overflow: hidden;
+  @apply h-dvh overflow-hidden;
 }
 
 .skip-link {
-  position: fixed;
-  top: 8px;
-  left: 8px;
-  z-index: 100;
-  padding: 9px 12px;
-  border-radius: $radius-sm;
-  background: $color-white;
-  color: $color-blue-dark;
-  font-size: 13px;
-  font-weight: 700;
-  transform: translateY(-150%);
+  @apply fixed left-2 top-2 z-[100] -translate-y-[150%] rounded-md bg-white px-3 py-[9px] text-[13px] font-bold text-[#0058db];
 
-  &:focus { transform: translateY(0); }
+  &:focus { @apply translate-y-0; }
 }
 
 .topbar {
-  @apply flex items-center;
-  width: 100%;
-  height: 72px;
-  padding-inline: 28px;
-  border-bottom: 1px solid #e4e8ef;
-  background: $color-white;
-  box-shadow: 0 4px 18px rgba(8, 31, 75, .06);
+  @apply flex h-[72px] w-full items-center border-b border-[#e4e8ef] bg-white px-7 shadow-[0_4px_18px_rgba(8,31,75,.06)];
 
   .brand {
-    @apply flex items-center;
-    gap: 11px;
-    color: #073d89;
-    font-size: 23px;
-    font-weight: 750;
-    letter-spacing: -.04em;
-    text-decoration: none;
+    @apply flex items-center gap-[11px] text-[23px] font-[750] tracking-[-.04em] text-[#073d89] no-underline;
   }
 
   .brand-mark {
-    @apply grid place-items-center;
-    width: 34px;
-    height: 34px;
-    border-radius: 8px;
-    background: linear-gradient(145deg, #0ba650, #0756a4);
-    color: $color-white;
+    @apply grid size-[34px] place-items-center rounded-lg bg-[linear-gradient(145deg,#0ba650,#0756a4)] text-white;
   }
 
-  .mobile-directory-status { display: none; }
+  .mobile-directory-status { @apply hidden; }
 }
 
 .layout {
-  @apply grid;
-  height: 100dvh;
+  @apply grid h-dvh overflow-hidden bg-[#f4f6f8];
   grid-template-columns: 224px minmax(0, 1fr);
-  overflow: hidden;
-  background: $color-canvas;
 }
 
 .sidebar {
-  @apply flex flex-col;
-  min-height: 0;
-  padding: 0 0 20px;
-  overflow: hidden;
-  background: linear-gradient(150deg, #07529d, #003b83);
+  @apply flex min-h-0 flex-col overflow-hidden bg-[linear-gradient(150deg,#07529d,#003b83)] pb-5;
 
   nav {
-    @apply grid;
-    gap: 6px;
-    padding: 24px 14px;
+    @apply grid gap-1.5 px-3.5 py-6;
   }
 
   .nav-item {
-    @apply flex items-center;
-    min-height: 48px;
-    gap: 12px;
-    padding-inline: 15px;
-    border-radius: $radius-sm;
-    color: $color-white;
-    font-size: 14px;
-    font-weight: 700;
-    text-decoration: none;
+    @apply flex min-h-12 items-center gap-3 rounded-md px-[15px] text-sm font-bold text-white no-underline;
     transition: background-color .18s ease, transform .18s ease;
 
     &.active {
@@ -93,84 +48,49 @@
   }
 
   .sidebar-note {
-    @apply flex items-start;
-    gap: 10px;
-    margin-top: auto;
-    margin-inline: 14px;
-    padding: 14px 12px;
-    border-top: 1px solid rgba($color-white, .18);
-    color: $color-white;
+    @apply mx-3.5 mt-auto flex items-start gap-2.5 border-t border-white/18 px-3 py-3.5 text-white;
 
-    div { @apply grid; gap: 3px; font-size: 11px; }
-    strong { font-size: 12px; }
-    span:not(.status-dot) { color: rgba($color-white, .72); }
+    div { @apply grid gap-[3px] text-[11px]; }
+    strong { @apply text-xs; }
+    span:not(.status-dot) { @apply text-white/72; }
   }
 
   .status-dot {
-    position: relative;
-    width: 8px;
-    height: 8px;
-    margin-top: 4px;
-    border-radius: 50%;
-    background: #35b777;
-    box-shadow: 0 0 0 4px rgba(#70dda8, .2);
+    @apply relative mt-1 size-2 rounded-full bg-[#35b777] shadow-[0_0_0_4px_rgba(112,221,168,.2)];
     animation: status-pulse 2.4s ease-in-out infinite;
   }
 }
 
 .content {
-  width: auto;
-  min-height: 0;
-  margin: 12px 16px 12px 30px;
-  padding: 28px 22px 42px;
-  overflow-y: auto;
+  @apply my-3 ml-[30px] mr-4 min-h-0 w-auto overflow-y-auto rounded-xl border border-[#edf0f4] bg-white px-[22px] pb-[42px] pt-7 shadow-[0_5px_20px_rgba(14,35,72,.06)];
   overscroll-behavior: contain;
   scrollbar-gutter: stable;
-  border: 1px solid #edf0f4;
-  border-radius: 12px;
-  background: $color-white;
-  box-shadow: $shadow-panel;
 }
 
 .page-heading {
-  @apply flex items-center justify-between;
-  gap: 24px;
-  margin-bottom: 30px;
-  padding: 4px 2px 24px;
-  border-bottom: 1px solid #e4e8ef;
+  @apply mb-[30px] flex items-center justify-between gap-6 border-b border-[#e4e8ef] px-0.5 pb-6 pt-1;
 
   .eyebrow {
-    margin: 0 0 8px;
-    color: $color-blue;
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: .08em;
-    text-transform: uppercase;
+    @apply mb-2 mt-0 text-[11px] font-[750] uppercase tracking-[.08em] text-[#0667f7];
   }
 
-  h1 { margin: 0; color: $color-navy; font-size: 30px; line-height: 1.1; letter-spacing: -.025em; }
-  .heading-copy { margin: 9px 0 0; color: $color-muted; font-size: 14px; line-height: 1.55; }
+  h1 { @apply m-0 text-[30px] leading-[1.1] tracking-[-.025em] text-[#071b4d]; }
+  .heading-copy { @apply mb-0 mt-[9px] text-sm leading-[1.55] text-[#52658f]; }
 }
 
 .primary-button,
 .secondary-button,
 .danger-button {
-  @apply inline-flex items-center justify-center;
-  min-height: 42px;
-  gap: 8px;
-  padding: 0 16px;
-  border-radius: $radius-sm;
-  font-size: 13px;
-  font-weight: 750;
+  @apply inline-flex min-h-[42px] items-center justify-center gap-2 rounded-md px-4 text-[13px] font-[750];
   transition: background-color .18s ease, border-color .18s ease, color .18s ease, transform .18s ease;
 }
 
-.primary-button { border: 1px solid $color-blue; background: $color-blue; color: $color-white; }
-.primary-button:hover { border-color: $color-blue-dark; background: $color-blue-dark; transform: translateY(-1px); }
-.secondary-button { border: 1px solid $color-blue; background: $color-white; color: $color-blue; }
-.secondary-button:hover { background: #edf5ff; color: $color-blue-dark; }
-.danger-button { border: 1px solid #d83a3a; background: #d83a3a; color: $color-white; }
-.danger-button:hover { border-color: #bd2929; background: #bd2929; }
+.primary-button { @apply border border-[#0667f7] bg-[#0667f7] text-white; }
+.primary-button:hover { @apply -translate-y-px border-[#0058db] bg-[#0058db]; }
+.secondary-button { @apply border border-[#0667f7] bg-white text-[#0667f7]; }
+.secondary-button:hover { @apply bg-[#edf5ff] text-[#0058db]; }
+.danger-button { @apply border border-[#d83a3a] bg-[#d83a3a] text-white; }
+.danger-button:hover { @apply border-[#bd2929] bg-[#bd2929]; }
 
 .directory-card {
   overflow: hidden;

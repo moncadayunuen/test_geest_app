@@ -2,33 +2,22 @@
 @reference '../../app/vendor.css';
 
 .form-field {
-  display: grid;
-  gap: 7px;
+  @apply grid gap-[7px];
 
   > span {
-    display: flex;
-    justify-content: space-between;
-    color: $color-navy;
-    font-size: 12px;
-    font-weight: 700;
+    @apply flex justify-between text-xs font-bold text-[#071b4d];
   }
 
   small {
-    color: #9399a5;
-    font-size: 10px;
-    font-weight: 500;
+    @apply text-[10px] font-medium text-[#9399a5];
   }
 
   b {
-    margin-right: auto;
-    margin-left: 4px;
-    color: #d83a3a;
+    @apply ml-1 mr-auto text-[#d83a3a];
   }
 
   em {
-    color: #c44242;
-    font-size: 10px;
-    font-style: normal;
+    @apply text-[10px] not-italic text-[#c44242];
     animation: field-error-in .16s ease;
   }
 }

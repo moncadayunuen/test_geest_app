@@ -1,51 +1,33 @@
+@reference '../../app/vendor.css';
+
 .contact-list {
-  display: grid;
-  min-width: 1120px;
+  @apply grid min-w-[1120px];
 
   .contact-table-head {
-    min-height: 48px;
-    padding-block: 0;
-    border-bottom: 0;
-    background: #0869b7;
-    color: #fff;
-    font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0;
-    text-transform: none;
+    @apply min-h-12 border-b-0 bg-[#0869b7] py-0 text-[11px] font-[750] normal-case tracking-normal text-white;
 
-    span:last-child { text-align: center; }
+    span:last-child { @apply text-center; }
   }
 
   .contact-row {
-    min-height: 66px;
-    border-left: 5px solid #0c9d9a;
-    border-bottom-color: #cfd8e4;
+    @apply min-h-[66px] border-l-[5px] border-l-[#0c9d9a] border-b-[#cfd8e4];
   }
 
-  .row-actions { justify-self: center; }
+  .row-actions { @apply justify-self-center; }
 
   .contact-row[data-department='Ventas'] { border-left-color: #7041bd; }
   .contact-row[data-department='Desarrollo'] { border-left-color: #079bd4; }
   .contact-row[data-department='Marketing'] { border-left-color: #f0b400; }
   .contact-row[data-department='Soporte'] { border-left-color: #0c9d9a; }
 
-  .contact-row:hover { background: #f4f9ff; }
+  .contact-row:hover { @apply bg-[#f4f9ff]; }
 
   .department-tag {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    padding: 0;
-    background: transparent;
-    color: #405273;
-    font-size: 11px;
+    @apply inline-flex items-center gap-[7px] bg-transparent p-0 text-[11px] text-[#405273];
   }
 
   .department-tag::before {
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #0c9d9a;
+    @apply size-[9px] rounded-full bg-[#0c9d9a];
     content: '';
   }
 
@@ -57,9 +39,9 @@
 
 @media (max-width: 640px) {
   .contact-list {
-    min-width: 0;
+    @apply min-w-0;
 
-    .contact-row { min-height: 70px; border-left-width: 4px; }
+    .contact-row { @apply min-h-[70px] border-l-4; }
     .contact-row.expanded > .department-tag { display: inline-flex !important; }
   }
 }

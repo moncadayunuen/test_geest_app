@@ -2,71 +2,43 @@
 @reference '../../app/vendor.css';
 
 .contact-filters {
-  min-width: 0;
-  margin: 0;
-  padding: 0 24px 18px;
-  border: 0;
-  border-bottom: 1px solid var(--line);
+  @apply m-0 min-w-0 border-0 border-b border-[var(--line)] px-6 pb-[18px];
 
   legend {
-    margin-bottom: 8px;
-    padding: 0;
-    color: $color-muted;
-    font-size: 11px;
-    font-weight: 700;
+    @apply mb-2 p-0 text-[11px] font-bold text-[#52658f];
   }
 
   &__options {
-    @apply flex overflow-x-auto;
-    gap: 8px;
-    padding: 2px;
+    @apply flex gap-2 overflow-x-auto p-0.5;
     scrollbar-width: thin;
   }
 
   &__option {
-    @apply inline-flex shrink-0 items-center;
-    min-height: 38px;
-    gap: 7px;
-    padding: 0 12px;
-    border: 1px solid #cdd7e5;
-    border-radius: $radius-sm;
-    background: $color-white;
-    color: #405273;
-    font-size: 12px;
-    font-weight: 650;
+    @apply inline-flex min-h-[38px] shrink-0 items-center gap-[7px] rounded-md border border-[#cdd7e5] bg-white px-3 text-xs font-[650] text-[#405273];
 
     small {
-      min-width: 20px;
-      padding: 2px 5px;
-      border-radius: 4px;
-      background: #eef2f7;
-      color: $color-muted;
-      font-size: 10px;
-      text-align: center;
+      @apply min-w-5 rounded-sm bg-[#eef2f7] px-[5px] py-0.5 text-center text-[10px] text-[#52658f];
     }
 
-    &:hover { border-color: #9dbce8; background: #f7faff; }
+    &:hover { @apply border-[#9dbce8] bg-[#f7faff]; }
 
     &--selected {
-      border-color: $color-blue;
-      background: #edf5ff;
-      color: $color-blue-dark;
-      box-shadow: 0 0 0 2px rgba($color-blue, .08);
+      @apply border-[#0667f7] bg-[#edf5ff] text-[#0058db] shadow-[0_0_0_2px_rgba(6,103,247,.08)];
 
-      small { background: $color-blue; color: $color-white; }
+      small { @apply bg-[#0667f7] text-white; }
     }
   }
-  &__indicator { @apply grid; gap: 1px; pointer-events: none; }
-  &__indicator i { width: 5px; height: 5px; border-radius: 1px; background: #079bd4; }
+  &__indicator { @apply pointer-events-none grid gap-px; }
+  &__indicator i { @apply size-[5px] rounded-[1px] bg-[#079bd4]; }
   &__indicator i:nth-child(2) { background: #0c9d9a; }
   &__indicator i:nth-child(3) { background: #f0b400; }
-  &__dot { width: 9px; height: 9px; border-radius: 50%; background: #0c9d9a; }
+  &__dot { @apply size-[9px] rounded-full bg-[#0c9d9a]; }
   &__dot--ventas { background: #7041bd; }
   &__dot--desarrollo { background: #079bd4; }
   &__dot--marketing { background: #f0b400; }
   &__dot--soporte { background: #0c9d9a; }
 }
 @media (max-width: 640px) {
-  .contact-filters { padding-inline: 16px; }
-  .contact-filters__options { margin-inline: -2px; }
+  .contact-filters { @apply px-4; }
+  .contact-filters__options { @apply -mx-0.5; }
 }

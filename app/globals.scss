@@ -11,13 +11,11 @@
   --brand-dark: #{$color-blue-dark};
 }
 
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+* { @apply box-border; }
+html { @apply scroll-smooth; }
 
 body {
-  @apply m-0;
-  background: var(--canvas);
-  color: var(--ink);
+  @apply m-0 bg-[var(--canvas)] text-[var(--ink)];
   font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
 }
 
@@ -27,8 +25,8 @@ select { font: inherit; }
 
 button,
 a { -webkit-tap-highlight-color: transparent; }
-button { cursor: pointer; }
-button:disabled { cursor: not-allowed; opacity: .48; transform: none !important; }
+button { @apply cursor-pointer; }
+button:disabled { @apply cursor-not-allowed opacity-[.48] transform-none!; }
 
 button:focus-visible,
 a:focus-visible,
@@ -36,15 +34,8 @@ input:focus-visible,
 select:focus-visible { @include focus-ring; }
 
 .sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
+  @apply absolute size-px -m-px overflow-hidden whitespace-nowrap border-0 p-0;
   clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
 }
 
 @media (prefers-reduced-motion: reduce) {

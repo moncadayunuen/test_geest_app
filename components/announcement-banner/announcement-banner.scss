@@ -2,38 +2,28 @@
 @reference '../../app/vendor.css';
 
 .announcement-banner {
-  @apply grid items-center;
-  min-height: 58px;
+  @apply grid min-h-[58px] items-center gap-[18px] rounded-t-[11px] bg-[linear-gradient(100deg,#7f75d8,#9b61c9)] px-4 py-2.5 text-white;
   grid-template-columns: max-content minmax(0, 1fr) 28px;
-  gap: 18px;
   margin: -28px -22px 26px;
-  padding: 10px 16px;
-  border-radius: 11px 11px 0 0;
-  background: linear-gradient(100deg, #7f75d8, #9b61c9);
-  color: #fff;
 
 
   &__badge {
-    padding: 7px 10px;
-    border-radius: $radius-sm;
-    background: rgba($color-white, .16);
-    font-size: 11px;
-    font-weight: 750;
+    @apply rounded-md bg-white/16 px-2.5 py-[7px] text-[11px] font-[750];
   }
-  &__message { margin: 0; text-align: center; }
-  &__message strong { font-size: 13px; }
-  &__message span { margin-left: 7px; color: rgba($color-white, .82); font-size: 12px; }
-  &__close { @apply grid place-items-center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: $radius-sm; background: transparent; color: $color-white; }
-  &__close:hover { background: rgba($color-white, .14); }
+  &__message { @apply m-0 text-center; }
+  &__message strong { @apply text-[13px]; }
+  &__message span { @apply ml-[7px] text-xs text-white/82; }
+  &__close { @apply grid size-7 place-items-center rounded-md border-0 bg-transparent p-0 text-white; }
+  &__close:hover { @apply bg-white/14; }
 }
 
 @media (max-width: 900px) {
-  .announcement-banner__message span { display: none; }
+  .announcement-banner__message span { @apply hidden; }
 }
 
 @media (max-width: 640px) {
   .announcement-banner { min-height: 52px; margin: -24px -16px 22px; padding-inline: 12px; border-radius: 0; gap: 10px; }
-  .announcement-banner__message { text-align: left; }
-  .announcement-banner__message strong { font-size: 12px; }
-  .announcement-banner__badge { font-size: 10px; }
+  .announcement-banner__message { @apply text-left; }
+  .announcement-banner__message strong { @apply text-xs; }
+  .announcement-banner__badge { @apply text-[10px]; }
 }
