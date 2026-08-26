@@ -1,18 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import { siteConfig } from '@/config/site';
 import './vendor.css';
 import './globals.scss';
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -71,9 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={siteConfig.language}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         {children}
         <script
           type="application/ld+json"
