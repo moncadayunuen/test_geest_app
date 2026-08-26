@@ -61,9 +61,12 @@ export function AddContactModal({ onClose, onAdd }: Props) {
           <div className="modal-icon">
             <Icon name="user-plus" size={20} />
           </div>
-          <div>
+          <div className="modal-heading">
             <p>Nuevo registro</p>
             <h2 id="add-contact-title">Agregar contacto</h2>
+            <span>
+              Completa la información para incorporar a una persona al directorio.
+            </span>
           </div>
           <button
             type="button"
@@ -86,7 +89,6 @@ export function AddContactModal({ onClose, onAdd }: Props) {
           {({ isValid, dirty, isSubmitting, touched, errors, handleBlur, handleChange, values }) => (
             <Form noValidate>
               <div className="modal-body">
-                <p className="form-intro">Completa la información para incorporar a una persona al directorio.</p>
                 <TextField label="Nombre completo" name="name" placeholder="Ej. Daniela Torres" required />
                 <TextField
                   label="Correo electrónico"
