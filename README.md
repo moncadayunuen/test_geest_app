@@ -25,7 +25,8 @@ Nexo es una interfaz web para administrar el directorio de un equipo. El proyect
 - Formik + Yup
 - Zustand para estado de dominio
 - Sistema propio de iconos SVG
-- Vinext / Vite
+- Next.js 16 con App Router
+- Webpack para el build de producción en Vercel
 
 ## Ejecutar localmente
 
@@ -37,6 +38,16 @@ npm run dev
 ```
 
 Abre [http://localhost:3000](http://localhost:3000).
+
+## Despliegue en Vercel
+
+El proyecto utiliza el preset de Next.js y genera la salida de producción en `.next`.
+
+- Build Command: `npm run build`
+- Output Directory: dejar vacío para que Vercel utilice el valor de Next.js
+- Node.js: 22.x o superior
+
+No configures `dist` como Output Directory: esa carpeta pertenecía al build anterior con Vinext/Vite.
 
 ## Comandos
 
