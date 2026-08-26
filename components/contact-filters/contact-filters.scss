@@ -2,15 +2,60 @@
 @reference '../../app/vendor.css';
 
 .contact-filters {
-  min-width: 0; margin: 0; padding: 0 24px 18px; border: 0; border-bottom: 1px solid var(--line);
-  legend { margin-bottom: 8px; padding: 0; color: #52658f; font-size: 11px; font-weight: 700; }
+  min-width: 0;
+  margin: 0;
+  padding: 0 24px 18px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
 
-  &__options { @apply flex overflow-x-auto; gap: 8px; padding: 2px; scrollbar-width: thin; }
-  &__option { @apply inline-flex shrink-0 items-center; min-height: 38px; gap: 7px; padding: 0 12px; border: 1px solid #cdd7e5; border-radius: $radius-sm; background: $color-white; color: #405273; font-size: 12px; font-weight: 650; }
-  &__option small { min-width: 20px; padding: 2px 5px; border-radius: 4px; background: #eef2f7; color: $color-muted; font-size: 10px; text-align: center; }
-  &__option:hover { border-color: #9dbce8; background: #f7faff; }
-  &__option--selected { border-color: $color-blue; background: #edf5ff; color: $color-blue-dark; box-shadow: 0 0 0 2px rgba($color-blue, .08); }
-  &__option--selected small { background: $color-blue; color: $color-white; }
+  legend {
+    margin-bottom: 8px;
+    padding: 0;
+    color: $color-muted;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  &__options {
+    @apply flex overflow-x-auto;
+    gap: 8px;
+    padding: 2px;
+    scrollbar-width: thin;
+  }
+
+  &__option {
+    @apply inline-flex shrink-0 items-center;
+    min-height: 38px;
+    gap: 7px;
+    padding: 0 12px;
+    border: 1px solid #cdd7e5;
+    border-radius: $radius-sm;
+    background: $color-white;
+    color: #405273;
+    font-size: 12px;
+    font-weight: 650;
+
+    small {
+      min-width: 20px;
+      padding: 2px 5px;
+      border-radius: 4px;
+      background: #eef2f7;
+      color: $color-muted;
+      font-size: 10px;
+      text-align: center;
+    }
+
+    &:hover { border-color: #9dbce8; background: #f7faff; }
+
+    &--selected {
+      border-color: $color-blue;
+      background: #edf5ff;
+      color: $color-blue-dark;
+      box-shadow: 0 0 0 2px rgba($color-blue, .08);
+
+      small { background: $color-blue; color: $color-white; }
+    }
+  }
   &__indicator { @apply grid; gap: 1px; pointer-events: none; }
   &__indicator i { width: 5px; height: 5px; border-radius: 1px; background: #079bd4; }
   &__indicator i:nth-child(2) { background: #0c9d9a; }

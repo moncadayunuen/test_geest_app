@@ -14,7 +14,12 @@ type TextFieldProps = {
   required?: boolean;
 };
 
-export function TextField({ label, optional, required, ...props }: TextFieldProps) {
+export function TextField({
+  label,
+  optional,
+  required,
+  ...props
+}: TextFieldProps) {
   const [field, meta] = useField(props);
   const [hasInteracted, setHasInteracted] = useState(false);
   const showError = Boolean(meta.error) && (meta.touched || hasInteracted);
@@ -26,9 +31,24 @@ export function TextField({ label, optional, required, ...props }: TextFieldProp
 
   return (
     <label className={`form-field ${showError ? 'invalid' : ''}`}>
-      <span>{label}{required && <b aria-hidden="true">*</b>}{optional && <small>Opcional</small>}</span>
-      <input {...field} {...props} onChange={handleChange} aria-required={required} aria-invalid={showError} aria-describedby={showError ? `${props.name}-error` : undefined} />
-      {showError && <em id={`${props.name}-error`} role="status" aria-live="polite">{meta.error}</em>}
+      <span>
+        {label}
+        {required && <b aria-hidden="true">*</b>}
+        {optional && <small>Opcional</small>}
+      </span>
+      <input
+        {...field}
+        {...props}
+        onChange={handleChange}
+        aria-required={required}
+        aria-invalid={showError}
+        aria-describedby={showError ? `${props.name}-error` : undefined}
+      />
+      {showError && (
+        <em id={`${props.name}-error`} role="status" aria-live="polite">
+          {meta.error}
+        </em>
+      )}
     </label>
   );
 }

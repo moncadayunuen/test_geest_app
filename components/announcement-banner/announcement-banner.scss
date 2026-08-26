@@ -13,7 +13,13 @@
   color: #fff;
 
 
-  &__badge { padding: 7px 10px; border-radius: $radius-sm; background: rgba($color-white, .16); font-size: 11px; font-weight: 750; }
+  &__badge {
+    padding: 7px 10px;
+    border-radius: $radius-sm;
+    background: rgba($color-white, .16);
+    font-size: 11px;
+    font-weight: 750;
+  }
   &__message { margin: 0; text-align: center; }
   &__message strong { font-size: 13px; }
   &__message span { margin-left: 7px; color: rgba($color-white, .82); font-size: 12px; }

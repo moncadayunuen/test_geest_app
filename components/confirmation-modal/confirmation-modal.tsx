@@ -13,7 +13,14 @@ type Props = {
   onConfirm: () => void;
 };
 
-export function ConfirmationModal({ title, description, icon, confirmLabel = 'Confirmar', onClose, onConfirm }: Props) {
+export function ConfirmationModal({
+  title,
+  description,
+  icon,
+  confirmLabel = 'Confirmar',
+  onClose,
+  onConfirm,
+}: Props) {
   const { isClosing, requestClose } = useModalExit(onClose);
 
   const confirm = () => {
@@ -22,14 +29,28 @@ export function ConfirmationModal({ title, description, icon, confirmLabel = 'Co
   };
 
   return (
-    <div className={`modal-backdrop ${isClosing ? 'is-closing' : ''}`} role="presentation" onMouseDown={(event) => event.target === event.currentTarget && requestClose()}>
-      <div className="confirm-card" role="alertdialog" aria-modal="true" aria-labelledby="delete-title" aria-describedby="delete-description">
+    <div
+      className={`modal-backdrop ${isClosing ? 'is-closing' : ''}`}
+      role="presentation"
+      onMouseDown={(event) => event.target === event.currentTarget && requestClose()}
+    >
+      <div
+        className="confirm-card"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="delete-title"
+        aria-describedby="delete-description"
+      >
         <span className="confirm-icon">{icon}</span>
         <h2 id="delete-title">{title}</h2>
         <p id="delete-description">{description}</p>
         <div>
-          <button className="secondary-button" type="button" autoFocus onClick={requestClose}>Cancelar</button>
-          <button className="danger-button" type="button" onClick={confirm}>{confirmLabel}</button>
+          <button className="secondary-button" type="button" autoFocus onClick={requestClose}>
+            Cancelar
+          </button>
+          <button className="danger-button" type="button" onClick={confirm}>
+            {confirmLabel}
+          </button>
         </div>
       </div>
     </div>

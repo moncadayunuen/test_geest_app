@@ -1,3 +1,6 @@
+@use '../../styles/tokens' as *;
+@reference '../../app/vendor.css';
+
 .form-field {
   display: grid;
   gap: 7px;
@@ -5,16 +8,38 @@
   > span {
     display: flex;
     justify-content: space-between;
-    color: #3d4352;
+    color: $color-navy;
     font-size: 12px;
     font-weight: 700;
   }
 
-  small { color: #9399a5; font-size: 10px; font-weight: 500; }
-  b { margin-right: auto; margin-left: 4px; color: #d83a3a; }
-  em { color: #c44242; font-size: 10px; font-style: normal; animation:field-error-in .16s ease; }
+  small {
+    color: #9399a5;
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  b {
+    margin-right: auto;
+    margin-left: 4px;
+    color: #d83a3a;
+  }
+
+  em {
+    color: #c44242;
+    font-size: 10px;
+    font-style: normal;
+    animation: field-error-in .16s ease;
+  }
 }
 
-@keyframes field-error-in { from { opacity: 0; transform: translateY(-2px); } }
+@keyframes field-error-in {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+}
 
-@media (prefers-reduced-motion: reduce) { .form-field em { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .form-field em { animation: none; }
+}

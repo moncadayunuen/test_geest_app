@@ -1,9 +1,25 @@
 import type { ReactNode, SVGProps } from 'react';
 import './icon.scss';
 
-export type IconName = 'brand' | 'check' | 'chevron-down' | 'close' | 'mail' | 'phone' | 'plus' | 'reset' | 'search' | 'trash' | 'user-plus' | 'users' | 'warning';
+export type IconName =
+  | 'brand'
+  | 'check'
+  | 'chevron-down'
+  | 'close'
+  | 'mail'
+  | 'phone'
+  | 'plus'
+  | 'reset'
+  | 'search'
+  | 'trash'
+  | 'user-plus'
+  | 'users'
+  | 'warning';
 
-type Props = Omit<SVGProps<SVGSVGElement>, 'children'> & { name: IconName; size?: number };
+type Props = Omit<SVGProps<SVGSVGElement>, 'children'> & {
+  name: IconName;
+  size?: number;
+};
 
 const paths: Record<IconName, ReactNode> = {
   brand: <><path d="M6 17V7h2.7l6.2 6.7V7h2.7v10H15l-6.3-6.8V17H6Z" fill="currentColor" stroke="none" /><circle cx="17.5" cy="5.5" r="2" fill="currentColor" stroke="none" /></>,
@@ -22,5 +38,22 @@ const paths: Record<IconName, ReactNode> = {
 };
 
 export function Icon({ name, size = 18, className = '', ...props }: Props) {
-  return <svg className={`app-icon ${className}`} width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false" {...props}>{paths[name]}</svg>;
+  return (
+    <svg
+      className={`app-icon ${className}`}
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...props}
+    >
+      {paths[name]}
+    </svg>
+  );
 }

@@ -16,19 +16,50 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
-  title: { default: siteConfig.title, template: '%s | Nexo' },
+  title: {
+    default: siteConfig.title,
+    template: '%s | Nexo',
+  },
   description: siteConfig.description,
   applicationName: siteConfig.name,
   authors: [{ name: 'Yunuen Moncada' }],
   creator: 'Yunuen Moncada',
   category: 'productivity',
-  keywords: ['directorio de contactos', 'gestión de contactos', 'directorio de equipo', 'Nexo'],
+  keywords: [
+    'directorio de contactos',
+    'gestión de contactos',
+    'directorio de equipo',
+    'Nexo',
+  ],
   alternates: { canonical: '/' },
-  icons: { icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }], shortcut: '/favicon.svg' },
+  icons: {
+    icon: [{ url: '/favicon.svg', type: 'image/svg+xml' }],
+    shortcut: '/favicon.svg',
+  },
   manifest: '/manifest.webmanifest',
-  openGraph: { type: 'website', locale: siteConfig.locale, url: '/', siteName: siteConfig.name, title: siteConfig.title, description: siteConfig.description },
-  twitter: { card: 'summary', title: siteConfig.title, description: siteConfig.description },
-  robots: { index: true, follow: true, googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 } },
+  openGraph: {
+    type: 'website',
+    locale: siteConfig.locale,
+    url: '/',
+    siteName: siteConfig.name,
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  twitter: {
+    card: 'summary',
+    title: siteConfig.title,
+    description: siteConfig.description,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export const viewport: Viewport = { themeColor: '#07529d', colorScheme: 'light' };
@@ -44,7 +75,21 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ '@context': 'https://schema.org', '@type': 'SoftwareApplication', name: siteConfig.name, applicationCategory: 'BusinessApplication', operatingSystem: 'Web', description: siteConfig.description, url: siteConfig.url, inLanguage: siteConfig.language }) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'SoftwareApplication',
+              name: siteConfig.name,
+              applicationCategory: 'BusinessApplication',
+              operatingSystem: 'Web',
+              description: siteConfig.description,
+              url: siteConfig.url,
+              inLanguage: siteConfig.language,
+            }),
+          }}
+        />
       </body>
     </html>
   );

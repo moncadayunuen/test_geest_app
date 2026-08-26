@@ -1,99 +1,144 @@
+@use '../../styles/tokens' as *;
+@reference '../../app/vendor.css';
+
 .modal-backdrop {
   background: rgba(7, 27, 77, .48);
   backdrop-filter: blur(3px);
-}
 
-.modal-backdrop .modal-card {
-  width: min(520px, 100%);
-  border: 1px solid #dce3ed;
-  border-radius: 9px;
-  box-shadow: 0 22px 60px rgba(7, 27, 77, .2);
+  .modal-card {
+    width: min(520px, 100%);
+    border: 1px solid $color-line;
+    border-radius: $radius-md;
+    box-shadow: 0 22px 60px rgba(7, 27, 77, .2);
+  }
 }
 
 .modal-card {
   .modal-header {
     min-height: 72px;
     padding: 15px 20px;
-    border-bottom: 1px solid #dce3ed;
-    background: #fff;
+    border-bottom: 1px solid $color-line;
+    background: $color-white;
   }
 
   .modal-icon {
     width: 40px;
     height: 40px;
     border: 1px solid #cbe0ff;
-    border-radius: 6px;
+    border-radius: $radius-sm;
     background: #edf5ff;
-    color: #0667f7;
+    color: $color-blue;
   }
 
-  .modal-header p {
-    margin: 0 0 3px;
-    color: #0667f7;
-    font-size: 10px;
-    font-weight: 750;
-    letter-spacing: .07em;
-    text-transform: uppercase;
-  }
+  .modal-header {
+    p {
+      margin: 0 0 3px;
+      color: $color-blue;
+      font-size: 10px;
+      font-weight: 750;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
 
-  .modal-header h2 {
-    margin: 0;
-    color: #071b4d;
-    font-size: 18px;
-    line-height: 1.2;
+    h2 {
+      margin: 0;
+      color: $color-navy;
+      font-size: 18px;
+      line-height: 1.2;
+    }
   }
 
   .modal-body { padding: 20px; gap: 15px; }
-  .form-intro { margin: 0 0 2px; color: #52658f; font-size: 12px; line-height: 1.5; }
-
-  .form-field > span { color: #071b4d; }
-  .form-field input,
-  .form-field select {
-    height: 44px;
-    padding: 0 12px;
-    border: 1px solid #cdd7e5;
-    border-radius: 6px;
-    background: #fff;
-    color: #071b4d;
-    font-size: 13px;
-    outline: 0;
+  .form-intro {
+    margin: 0 0 2px;
+    color: $color-muted;
+    font-size: 12px;
+    line-height: 1.5;
   }
 
-  .form-field input::placeholder { color: #8190ad; }
-  .form-field input:focus,
-  .form-field select:focus { border-color: #0667f7; box-shadow: 0 0 0 3px rgba(6, 103, 247, .1); }
-  .form-field.invalid input,
-  .form-field.invalid select { border-color: #d83a3a; background: #fffafa; }
+  .form-field {
+    > span { color: $color-navy; }
+
+    input,
+    select {
+      height: 44px;
+      padding: 0 12px;
+      border: 1px solid #cdd7e5;
+      border-radius: $radius-sm;
+      background: $color-white;
+      color: $color-navy;
+      font-size: 13px;
+      outline: 0;
+
+      &:focus {
+        border-color: $color-blue;
+        box-shadow: 0 0 0 3px rgba($color-blue, .1);
+      }
+    }
+
+    input::placeholder { color: #8190ad; }
+
+    &.invalid {
+      input,
+      select {
+        border-color: #d83a3a;
+        background: #fffafa;
+      }
+    }
+  }
 
   .modal-footer {
     min-height: 70px;
     align-items: center;
     justify-content: space-between;
     padding: 16px 20px 20px;
-    border-top: 1px solid #e4e8ef;
+    border-top: 1px solid $color-line;
     background: #fbfcfe;
   }
 
-  .modal-footer .secondary-button {
-    min-height: 42px;
-    border-color: #0667f7;
-    border-radius: 6px;
-    color: #0667f7;
+  .modal-footer {
+    .secondary-button {
+      min-height: 42px;
+      border-color: $color-blue;
+      border-radius: $radius-sm;
+      color: $color-blue;
+
+      &:hover { background: #edf5ff; }
+    }
+
+    .primary-button {
+      min-height: 42px;
+      border-radius: $radius-sm;
+      background: $color-blue;
+    }
   }
 
-  .modal-footer .secondary-button:hover { background: #edf5ff; }
-  .modal-footer .primary-button { min-height: 42px; border-radius: 6px; background: #0667f7; }
   .form-status { color: #687793; font-size: 10px; }
   .form-status b { color: #d83a3a; }
   .modal-actions { display: flex; gap: 10px; }
-  .icon-button { color: #52658f; }
-  .icon-button:hover { background: #edf5ff; color: #0667f7; }
+  .icon-button {
+    color: $color-muted;
+
+    &:hover { background: #edf5ff; color: $color-blue; }
+  }
 }
 
 @media (max-width: 640px) {
   .modal-backdrop .modal-card { border-radius: 10px 10px 0 0; }
-  .modal-card .modal-footer { gap: 8px; }
-  .modal-card .modal-footer { align-items: stretch; flex-direction: column; }
-  .modal-actions { display: grid; grid-template-columns: 1fr 1fr; }
-  .modal-card .modal-footer button { width: 100%; justify-content: center; }
+
+  .modal-card .modal-footer {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 8px;
+
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 }

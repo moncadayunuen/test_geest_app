@@ -24,14 +24,35 @@ export function ContactManager() {
   const [showAnnouncement, setShowAnnouncement] = useState(true);
   const [pendingDelete, setPendingDelete] = useState<Contact | null>(null);
   const { message, showMessage, clearMessage } = useTimedMessage();
-  const { query, setQuery, department, setDepartment, filteredContacts, counts, hasFilters, clearFilters } = useContactFilters(contacts);
+  const {
+    query,
+    setQuery,
+    department,
+    setDepartment,
+    filteredContacts,
+    counts,
+    hasFilters,
+    clearFilters,
+  } = useContactFilters(contacts);
   const loading = status === 'idle' || status === 'loading';
   const loadError = status === 'error';
 
-  useEffect(() => { const timer = window.setTimeout(() => void loadContacts(), 0); return () => window.clearTimeout(timer); }, [loadContacts]);
+  useEffect(() => {
+    const timer = window.setTimeout(() => void loadContacts(), 0);
+    return () => window.clearTimeout(timer);
+  }, [loadContacts]);
 
-  const addContact = (contact: Contact) => { addContactToStore(contact); showMessage(`${contact.name} se agregó al directorio`); };
-  const deleteContact = () => { if (!pendingDelete) return; removeContact(pendingDelete.id); showMessage(`${pendingDelete.name} se eliminó del directorio`); };
+  const addContact = (contact: Contact) => {
+    addContactToStore(contact);
+    showMessage(`${contact.name} se agregó al directorio`);
+  };
+
+  const deleteContact = () => {
+    if (!pendingDelete) return;
+
+    removeContact(pendingDelete.id);
+    showMessage(`${pendingDelete.name} se eliminó del directorio`);
+  };
 
   const directoryContent = loading
     ? <SkeletonList />
@@ -78,7 +99,9 @@ export function ContactManager() {
             <div>
               <p className="eyebrow">Directorio del equipo</p>
               <h1>Contactos</h1>
-              <p className="heading-copy">Gestiona a las personas que hacen posible el trabajo.</p>
+              <p className="heading-copy">
+                Gestiona a las personas que hacen posible el trabajo.
+              </p>
             </div>
             <button className="primary-button" type="button" onClick={() => setShowAdd(true)}>
               <Icon name="plus" /> Agregar contacto
@@ -90,7 +113,11 @@ export function ContactManager() {
               <div>
                 <h2 id="directory-title">Directorio</h2>
                 <p aria-live="polite">
-                  {loading ? 'Cargando contactos…' : `${filteredContacts.length} ${filteredContacts.length === 1 ? 'contacto encontrado' : 'contactos encontrados'}`}
+                  {loading
+                    ? 'Cargando contactos…'
+                    : `${filteredContacts.length} ${filteredContacts.length === 1
+                      ? 'contacto encontrado'
+                      : 'contactos encontrados'}`}
                 </p>
               </div>
 
@@ -100,7 +127,11 @@ export function ContactManager() {
                   <label className="search-field">
                     <Icon name="search" size={20} />
                     <span className="sr-only">Buscar por nombre</span>
-                    <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Escribe un nombre…" />
+                    <input
+                      value={query}
+                      onChange={(event) => setQuery(event.target.value)}
+                      placeholder="Escribe un nombre…"
+                    />
                   </label>
                 </div>
                 {hasFilters && (
@@ -111,7 +142,12 @@ export function ContactManager() {
               </div>
             </div>
 
-            <ContactFilters value={department} total={contacts.length} counts={counts} onChange={setDepartment} />
+            <ContactFilters
+              value={department}
+              total={contacts.length}
+              counts={counts}
+              onChange={setDepartment}
+            />
             <div className="filter-result" key={department}>{directoryContent}</div>
           </section>
         </section>
@@ -121,7 +157,12 @@ export function ContactManager() {
       {pendingDelete && (
         <ConfirmationModal
           title="Eliminar contacto"
-          description={<>¿Seguro que quieres eliminar a <strong>{pendingDelete.name}</strong>? Esta acción no se puede deshacer.</>}
+          description={(
+            <>
+              ¿Seguro que quieres eliminar a <strong>{pendingDelete.name}</strong>?
+              {' '}Esta acción no se puede deshacer.
+            </>
+          )}
           icon={<Icon name="trash" size={22} />}
           confirmLabel="Sí, eliminar"
           onClose={() => setPendingDelete(null)}
@@ -132,7 +173,9 @@ export function ContactManager() {
         <div className="toast" role="status">
           <Icon name="check" />
           <span>{message}</span>
-          <button onClick={clearMessage} aria-label="Cerrar notificación"><Icon name="close" size={15} /></button>
+          <button onClick={clearMessage} aria-label="Cerrar notificación">
+            <Icon name="close" size={15} />
+          </button>
         </div>
       )}
     </main>
