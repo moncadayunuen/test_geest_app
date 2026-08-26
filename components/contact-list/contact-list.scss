@@ -1,6 +1,6 @@
 .contact-list {
   display: grid;
-  min-width: 1080px;
+  min-width: 1120px;
 
   .contact-table-head {
     min-height: 48px;
@@ -12,6 +12,8 @@
     font-weight: 750;
     letter-spacing: 0;
     text-transform: none;
+
+    span:last-child { text-align: center; }
   }
 
   .contact-row {
@@ -19,6 +21,8 @@
     border-left: 5px solid #0c9d9a;
     border-bottom-color: #cfd8e4;
   }
+
+  .row-actions { justify-self: center; }
 
   .contact-row[data-department='Ventas'] { border-left-color: #7041bd; }
   .contact-row[data-department='Desarrollo'] { border-left-color: #079bd4; }

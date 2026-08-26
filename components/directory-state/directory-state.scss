@@ -1,7 +1,7 @@
 .empty-state { text-align: center; }
 .skeleton-list {
   display: grid;
-  min-width: 1080px;
+  min-width: 1120px;
   overflow: hidden;
 
   .skeleton-table-head {
@@ -18,7 +18,13 @@
 
   .skeleton-row {
     min-height: 66px;
-    grid-template-columns: 42px minmax(145px, 1.05fr) minmax(180px, 1.25fr) minmax(140px, .8fr) 105px 34px;
+    grid-template-columns:
+      42px
+      minmax(160px, 1.05fr)
+      minmax(210px, 1.25fr)
+      minmax(165px, .8fr)
+      135px
+      86px;
     gap: 14px;
     padding: 14px 24px;
     border-left: 5px solid #d5e5f5;

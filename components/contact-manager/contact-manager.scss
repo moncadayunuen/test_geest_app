@@ -243,7 +243,13 @@
 .contact-table-head,
 .contact-row {
   @apply grid items-center;
-  grid-template-columns: 42px minmax(145px, 1.05fr) minmax(180px, 1.25fr) minmax(140px, .8fr) 105px 34px;
+  grid-template-columns:
+    42px
+    minmax(160px, 1.05fr)
+    minmax(210px, 1.25fr)
+    minmax(165px, .8fr)
+    135px
+    86px;
   gap: 14px;
 }
 
