@@ -60,7 +60,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={siteConfig.language}>
-      <body>
+      <body suppressHydrationWarning>
         {children}
         <script
           type="application/ld+json"
