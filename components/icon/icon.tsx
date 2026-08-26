@@ -32,7 +32,13 @@ const paths: Record<IconName, ReactNode> = {
   reset: <><path d="M4 8V4m0 0h4M4 4l3 3a8 8 0 1 1-2 8" /></>,
   search: <><circle cx="11" cy="11" r="7" /><path d="m20 20-4-4" /></>,
   trash: <><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6" /></>,
-  'user-plus': <><circle cx="9" cy="8" r="4" /><path d="M3 21v-2a6 6 0 0 1 12 0v2M19 8v6M16 11h6" /></>,
+  'user-plus': (
+    <>
+      <circle cx="8.5" cy="7.5" r="3.5" />
+      <path d="M2.5 20v-1.5a6 6 0 0 1 12 0V20" />
+      <path d="M18.5 6v7M15 9.5h7" />
+    </>
+  ),
   users: <><circle cx="9" cy="8" r="4" /><path d="M2 21v-2a7 7 0 0 1 14 0v2M17 4a4 4 0 0 1 0 8M18 15a6 6 0 0 1 4 6" /></>,
   warning: <><path d="M12 3 2.5 20h19L12 3Z" /><path d="M12 9v5M12 17h.01" /></>,
 };
