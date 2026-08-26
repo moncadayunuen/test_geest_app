@@ -33,11 +33,20 @@ export const metadata: Metadata = {
     siteName: siteConfig.name,
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [
+      {
+        url: siteConfig.socialImage,
+        width: 1200,
+        height: 630,
+        alt: 'Nexo, gestión de contactos de equipo',
+      },
+    ],
   },
   twitter: {
-    card: 'summary',
+    card: 'summary_large_image',
     title: siteConfig.title,
     description: siteConfig.description,
+    images: [siteConfig.socialImage],
   },
   robots: {
     index: true,
