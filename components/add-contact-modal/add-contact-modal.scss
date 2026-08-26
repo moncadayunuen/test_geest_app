@@ -91,6 +91,11 @@
       select {
         border-color: #d83a3a;
         background: #fffafa;
+
+        &:focus {
+          border-color: #d83a3a;
+          box-shadow: 0 0 0 3px rgba(#d83a3a, .1);
+        }
       }
     }
   }

@@ -87,7 +87,7 @@ export function AddContactModal({ onClose, onAdd }: Props) {
           onSubmit={submit}
         >
           {({ isValid, dirty, isSubmitting, touched, errors, handleBlur, handleChange, values }) => (
-            <Form noValidate>
+            <Form noValidate autoComplete="off" data-form-type="other">
               <div className="modal-body">
                 <TextField label="Nombre completo" name="name" placeholder="Ej. Daniela Torres" required />
                 <TextField
