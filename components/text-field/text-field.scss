@@ -11,5 +11,9 @@
   }
 
   small { color: #9399a5; font-size: 10px; font-weight: 500; }
-  em { color: #c44242; font-size: 10px; font-style: normal; }
+  em { color: #c44242; font-size: 10px; font-style: normal; animation:field-error-in .16s ease; }
 }
+
+@keyframes field-error-in { from { opacity: 0; transform: translateY(-2px); } }
+
+@media (prefers-reduced-motion: reduce) { .form-field em { animation: none; } }
