@@ -2,7 +2,7 @@
 
 .empty-state { @apply text-center; }
 .skeleton-list {
-  @apply grid min-w-[1120px] overflow-hidden;
+  @apply grid min-w-[920px] overflow-hidden;
 
   .skeleton-table-head {
     @apply grid min-h-12 items-center gap-7 bg-[#0869b7] px-[74px];

@@ -137,7 +137,7 @@
 }
 
 .filter-result {
-  overflow-x: auto;
+  @apply overflow-x-auto overflow-y-hidden;
   animation: filter-in .2s ease both;
   scrollbar-color: #9eb1ca #edf1f6;
   scrollbar-width: thin;

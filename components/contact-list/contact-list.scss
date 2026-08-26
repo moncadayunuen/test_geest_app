@@ -1,7 +1,7 @@
 @reference '../../app/vendor.css';
 
 .contact-list {
-  @apply grid min-w-[1120px];
+  @apply grid min-w-[920px];
 
   .contact-table-head {
     @apply min-h-12 border-b-0 bg-[#0869b7] py-0 text-[11px] font-[750] normal-case tracking-normal text-white;
