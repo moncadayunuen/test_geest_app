@@ -36,17 +36,23 @@
   .form-field input,
   .form-field select {
     height: 44px;
-    border-color: #cdd7e5;
+    padding: 0 12px;
+    border: 1px solid #cdd7e5;
     border-radius: 6px;
     background: #fff;
     color: #071b4d;
+    outline: 0;
   }
 
   .form-field input::placeholder { color: #8190ad; }
   .form-field input:focus,
   .form-field select:focus { border-color: #0667f7; box-shadow: 0 0 0 3px rgba(6, 103, 247, .1); }
+  .form-field.invalid input,
+  .form-field.invalid select { border-color: #d83a3a; background: #fffafa; }
 
   .modal-footer {
+    align-items: center;
+    justify-content: space-between;
     padding: 16px 20px 20px;
     border-top: 1px solid #e4e8ef;
     background: #fbfcfe;
@@ -61,6 +67,9 @@
 
   .modal-footer .secondary-button:hover { background: #edf5ff; }
   .modal-footer .primary-button { min-height: 42px; border-radius: 6px; background: #0667f7; }
+  .form-status { color: #687793; font-size: 10px; }
+  .form-status b { color: #d83a3a; }
+  .modal-actions { display: flex; gap: 10px; }
   .icon-button { color: #52658f; }
   .icon-button:hover { background: #edf5ff; color: #0667f7; }
 }
@@ -68,5 +77,7 @@
 @media (max-width: 640px) {
   .modal-backdrop .modal-card { border-radius: 10px 10px 0 0; }
   .modal-card .modal-footer { gap: 8px; }
-  .modal-card .modal-footer button { flex: 1; justify-content: center; }
+  .modal-card .modal-footer { align-items: stretch; flex-direction: column; }
+  .modal-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .modal-card .modal-footer button { width: 100%; justify-content: center; }
 }

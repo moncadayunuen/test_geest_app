@@ -50,12 +50,12 @@ export function AddContactModal({ onClose, onAdd }: Props) {
             <Form noValidate>
               <div className="modal-body">
                 <p className="form-intro">Completa la información para incorporar a una persona al directorio.</p>
-                <TextField label="Nombre completo" name="name" placeholder="Ej. Daniela Torres" />
-                <TextField label="Correo electrónico" name="email" type="email" placeholder="nombre@empresa.com" />
+                <TextField label="Nombre completo" name="name" placeholder="Ej. Daniela Torres" required />
+                <TextField label="Correo electrónico" name="email" type="email" placeholder="nombre@empresa.com" required />
                 <TextField label="Teléfono" name="phone" type="tel" placeholder="+52 55 1234 5678" optional />
                 <label className={`form-field ${touched.department && errors.department ? 'invalid' : ''}`}>
-                  <span>Departamento</span>
-                  <select name="department" value={values.department} onChange={handleChange} onBlur={handleBlur} aria-invalid={Boolean(touched.department && errors.department)}>
+                  <span>Departamento <b aria-hidden="true">*</b></span>
+                  <select name="department" value={values.department} onChange={handleChange} onBlur={handleBlur} aria-required="true" aria-invalid={Boolean(touched.department && errors.department)}>
                     <option value="" disabled>Selecciona una opción</option>
                     {DEPARTMENTS.map((item) => <option key={item}>{item}</option>)}
                   </select>
@@ -63,10 +63,13 @@ export function AddContactModal({ onClose, onAdd }: Props) {
                 </label>
               </div>
               <div className="modal-footer">
-                <button className="secondary-button" type="button" onClick={requestClose}>Cancelar</button>
-                <button className="primary-button" type="submit" disabled={!dirty || !isValid || isSubmitting} aria-disabled={!dirty || !isValid || isSubmitting}>
-                  <Icon name="plus" size={17} /> Agregar contacto
-                </button>
+                <span className="form-status"><b aria-hidden="true">*</b> Campos obligatorios</span>
+                <div className="modal-actions">
+                  <button className="secondary-button" type="button" onClick={requestClose}>Cancelar</button>
+                  <button className="primary-button" type="submit" disabled={!dirty || !isValid || isSubmitting} aria-disabled={!dirty || !isValid || isSubmitting}>
+                    <Icon name="plus" size={17} /> Agregar contacto
+                  </button>
+                </div>
               </div>
             </Form>
           )}
