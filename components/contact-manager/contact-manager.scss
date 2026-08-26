@@ -313,7 +313,7 @@
 .modal-card { max-height: calc(100vh - 36px); overflow: auto; background: $color-white; animation: modal-in .22s ease both; }
 .modal-header {
   @apply grid items-start;
-  grid-template-columns: 42px 1fr 34px;
+  grid-template-columns: 44px 1fr 34px;
   gap: 13px;
 }
 .modal-body { @apply grid; }

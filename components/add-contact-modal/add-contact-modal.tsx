@@ -59,7 +59,7 @@ export function AddContactModal({ onClose, onAdd }: Props) {
       >
         <div className="modal-header">
           <div className="modal-icon">
-            <Icon name="user-plus" size={20} />
+            <Icon name="user-plus" size={25} />
           </div>
           <div className="modal-heading">
             <p>Nuevo registro</p>

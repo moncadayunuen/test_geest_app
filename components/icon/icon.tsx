@@ -34,9 +34,13 @@ const paths: Record<IconName, ReactNode> = {
   trash: <><path d="M4 7h16M9 7V4h6v3M7 7l1 14h8l1-14M10 11v6M14 11v6" /></>,
   'user-plus': (
     <>
-      <circle cx="8.5" cy="7.5" r="3.5" />
-      <path d="M2.5 20v-1.5a6 6 0 0 1 12 0V20" />
-      <path d="M18.5 6v7M15 9.5h7" />
+      <circle cx="8" cy="7" r="3.75" fill="currentColor" stroke="none" />
+      <path
+        d="M1.75 20a6.25 6.25 0 0 1 12.5 0v1h-12.5v-1Z"
+        fill="currentColor"
+        stroke="none"
+      />
+      <path d="M18.5 5.5v7M15 9h7" />
     </>
   ),
   users: <><circle cx="9" cy="8" r="4" /><path d="M2 21v-2a7 7 0 0 1 14 0v2M17 4a4 4 0 0 1 0 8M18 15a6 6 0 0 1 4 6" /></>,
