@@ -14,7 +14,6 @@ export function DirectoryCommands({ onSearch, onAdd }: Props) {
         <button type="button" onClick={onSearch}>
           <Icon name="search" size={14} />
           Buscar por nombre
-          <kbd>Enter</kbd>
         </button>
         <button type="button" onClick={onAdd}>
           <Icon name="plus" size={14} />
@@ -22,13 +21,11 @@ export function DirectoryCommands({ onSearch, onAdd }: Props) {
           <kbd>N</kbd>
         </button>
         <span>
-          <Icon name="reset" size={14} />
           Filtrar por departamento
         </span>
         <span>
           <Icon name="trash" size={14} />
-          Enfoca una fila para eliminar
-          <kbd>Delete</kbd>
+          Eliminar desde opciones
         </span>
       </div>
     </aside>

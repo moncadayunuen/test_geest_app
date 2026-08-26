@@ -30,14 +30,6 @@ export function ContactList({ contacts, onDelete }: Props) {
             className={`contact-row ${expanded ? 'expanded' : ''}`}
             data-department={contact.department}
             key={contact.id}
-            tabIndex={0}
-            aria-label={`${contact.name}, ${contact.department}. Presiona Delete para eliminar.`}
-            onKeyDown={(event) => {
-              if (event.key === 'Delete' && event.target === event.currentTarget) {
-                event.preventDefault();
-                onDelete(contact);
-              }
-            }}
           >
             <span className={`avatar tone-${index % 4}`}>{getInitials(contact.name)}</span>
             <div className="contact-person">

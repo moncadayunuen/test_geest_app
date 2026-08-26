@@ -266,14 +266,6 @@
   &[href]:hover { text-decoration-color: currentColor; }
 }
 
-.contact-row:focus-visible {
-  position: relative;
-  z-index: 1;
-  outline: 2px solid $color-blue;
-  outline-offset: -2px;
-  background: #f7faff;
-}
-
 .phone-link:not([href]) { color: #9ba1ad; pointer-events: none; }
 .row-actions { @apply flex items-center; gap: 2px; }
 .expand-button,
