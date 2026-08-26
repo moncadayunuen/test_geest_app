@@ -71,7 +71,7 @@ components/
   confirmation-modal/ Modal de confirmación configurable
   add-contact-modal/  Formulario de alta del dominio
   contact-list/       Tabla responsive de contactos
-  contact-filters/    Filtro de departamento con conteos
+  contact-filters/    Chips de departamento con conteos
   directory-state/    Estados de carga, error y vacío
   contact-manager/    Composición de la vista y estado
   */                  Cada componente contiene su TSX y SCSS

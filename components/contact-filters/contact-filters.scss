@@ -1,19 +1,27 @@
 .contact-filters {
-  display: flex; align-items: center; gap: 9px; padding: 0 24px 18px; border-bottom: 1px solid var(--line);
-  > label { color: #52658f; font-size: 12px; font-weight: 650; }
+  min-width: 0; margin: 0; padding: 0 24px 18px; border: 0; border-bottom: 1px solid var(--line);
+  legend { margin-bottom: 8px; padding: 0; color: #52658f; font-size: 11px; font-weight: 700; }
 }
-.filter-select {
-  position: relative; width: min(250px, 100%); height: 40px; display: flex; align-items: center; border: 1px solid #cdd7e5; border-radius: 6px; background: #fff;
-  select { width: 100%; height: 100%; padding: 0 34px; border: 0; outline: 0; background: transparent; color: #405273; font-size: 12px; font-weight: 650; cursor: pointer; }
-  &:focus-within { border-color: #0667f7; box-shadow: 0 0 0 3px rgba(6, 103, 247, .1); }
+.filter-options { display: flex; gap: 8px; overflow-x: auto; padding: 2px; scrollbar-width: thin; }
+.filter-option {
+  min-height: 38px; display: inline-flex; align-items: center; gap: 7px; flex: 0 0 auto; padding: 0 12px; border: 1px solid #cdd7e5; border-radius: 6px; background: #fff; color: #405273; font-size: 12px; font-weight: 650;
+  small { min-width: 20px; padding: 2px 5px; border-radius: 4px; background: #eef2f7; color: #52658f; font-size: 10px; text-align: center; }
+  &:hover { border-color: #9dbce8; background: #f7faff; }
+  &.selected { border-color: #0667f7; background: #edf5ff; color: #0058db; box-shadow: 0 0 0 2px rgba(6, 103, 247, .08); }
+  &.selected small { background: #0667f7; color: #fff; }
 }
 .filter-indicator {
-  position: absolute; left: 12px; display: grid; gap: 1px; pointer-events: none;
+  display: grid; gap: 1px; pointer-events: none;
   i { width: 5px; height: 5px; border-radius: 1px; background: #079bd4; }
   i:nth-child(2) { background: #0c9d9a; }
   i:nth-child(3) { background: #f0b400; }
 }
+.filter-dot { width: 9px; height: 9px; border-radius: 50%; background: #0c9d9a; }
+.filter-dot-ventas { background: #7041bd; }
+.filter-dot-desarrollo { background: #079bd4; }
+.filter-dot-marketing { background: #f0b400; }
+.filter-dot-soporte { background: #0c9d9a; }
 @media (max-width: 640px) {
-  .contact-filters { align-items: stretch; flex-direction: column; padding-inline: 16px; }
-  .filter-select { width: 100%; }
+  .contact-filters { padding-inline: 16px; }
+  .filter-options { margin-inline: -2px; }
 }
